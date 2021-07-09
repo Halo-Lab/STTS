@@ -1,21 +1,15 @@
-
 import React from "react";
+import date from 'date-and-time';
 
-import { Line } from "react-chartjs-2";
+import {Line} from "react-chartjs-2";
 
 const Chart = ({arr}) => {
 
-const dataDownloads=arr?.downloads?.map(el=>el?.downloads);
+  const dataDownloads = arr?.downloads?.map(el => el?.downloads);
 
-  const labels = [
-    'Mon',
-    'Tues',
-    'Wedn',
-    'Thurs',
-    'Fri',
-    'Sat',
-    'Sun'
-  ];
+  const labels = arr?.downloads?.map(el => date.transform(el.day, 'YYYY-MM-DD', 'ddd'));
+
+
   const data = {
     labels: labels,
     datasets: [{
@@ -27,23 +21,21 @@ const dataDownloads=arr?.downloads?.map(el=>el?.downloads);
   };
 
   return (
-      <Line
-        data={data}
-        // height={300}
-        // width={50}
-        options={{
-          maintainAspectRatio: false,
-          title: {
-            display: true,
-            text: "Weekly downLoad",
-            fontSize: 25
-          },
-          legend: {
-            display: true,
-            position: "top"
-          }
-        }}
-      />
+    <Line
+      data={data}
+      options={{
+        maintainAspectRatio: false,
+        title: {
+          display: true,
+          text: "Weekly downLoad",
+          fontSize: 25
+        },
+        legend: {
+          display: true,
+          position: "top"
+        }
+      }}
+    />
   );
 };
 
