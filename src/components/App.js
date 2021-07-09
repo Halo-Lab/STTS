@@ -22,28 +22,33 @@ const App = () => {
 
   useEffect(() => {
 
-    listforReques.forEach(el => dispatch(operations.fetchSinglePackage(el)))
+    listforReques.forEach(el =>{
+
+        // console.log(el.split('/')[1]);
+      dispatch(operations.fetchSinglePackage(el));
+      dispatch(operations.getWeeklyDownload(el.split('/')[1]));
+    }
+    )
 
 
   }, [list])
-
-  useEffect(() => {
-
-    data();
-
-
-  }, []);
-
-  const data=async ()=>{
-    try{
-      const foo= await axios.get('https://api.npmjs.org/downloads/range/last-week/eleventy-plugin-styles')
-      console.log(foo);
-      // /downloads/point/last-week/express
-    }
-    catch (err){
-      console.log(err);
-    }
-  }
+  //
+  // useEffect(() => {
+  //
+  //   data();
+  //
+  //
+  // }, []);
+  //
+  // const data=async ()=>{
+  //   try{
+  //     const foo= await axios.get('https://api.npmjs.org/downloads/range/last-week/eleventy-plugin-styles')
+  //     console.log(foo);
+  //   }
+  //   catch (err){
+  //     console.log(err);
+  //   }
+  // }
 
   return (
     <BrowserRouter>

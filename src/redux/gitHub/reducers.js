@@ -18,6 +18,10 @@ const packages = createReducer([], {
   [actions.getPackagesSuccess]: getpackages,
 });
 
+const weeklyDownload=createReducer([],{
+  [actions.getWeeklyDownloadSuccess]:(state, {payload}) => [payload,...state],
+})
+
 const selectedPackagesList=createReducer([],{
   [actions.addItemPackage]:addItemPackage,
   [actions.deletePackage]:deletePackages,
@@ -27,4 +31,4 @@ const selectedPackages=createReducer([],{
   [actions.deletePackage]:updateList,
 })
 
-export default combineReducers({packages,selectedPackagesList,selectedPackages,user});
+export default combineReducers({packages,selectedPackagesList,selectedPackages,user,weeklyDownload});

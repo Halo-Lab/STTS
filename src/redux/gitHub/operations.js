@@ -24,6 +24,16 @@ const fetchSinglePackage= (name) => async (dispatch) => {
   }
 };
 
+const getWeeklyDownload= (name) => async (dispatch) => {
+  dispatch(actions.getWeeklyDownloadRequest());
+  try {
+    const {data} = await axios.get(`https://api.npmjs.org/downloads/range/last-week/${name}`);
+    dispatch(actions.getWeeklyDownloadSuccess(data));
+  } catch (error) {
+    dispatch(actions.getWeeklyDownloadError(error));
+  }
+};
+
 export default {
-  fetchPackages,fetchSinglePackage
+  fetchPackages,fetchSinglePackage,getWeeklyDownload
 }

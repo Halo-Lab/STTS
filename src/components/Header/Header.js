@@ -21,7 +21,9 @@ const Header = () => {
 
      <div className={s.fork}>
        <IconFork/>
-       <p>Fork me on github</p>
+      <a href={'https://github.com/Halo-Lab/STTS'}>
+        <p>Fork me on github</p>
+      </a>
      </div>
 
    </header>
