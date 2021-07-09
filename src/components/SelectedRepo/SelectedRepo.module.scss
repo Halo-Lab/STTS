@@ -1,0 +1,103 @@
+.container {
+  padding-left: 16px;
+  padding-right: 16px;
+  @media (min-width: 768px) {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  @media (min-width: 1024px) {
+    padding-left: 112px;
+    padding-right: 112px;
+  }
+
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns:1fr;
+  row-gap: 16px;
+  justify-items: center;
+  margin-top: 40px;
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 30px;
+    row-gap: 30px;
+    justify-content: center;
+  }
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (min-width: 1600px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.item {
+  position: relative;
+  width: 87%;
+  min-height: 260px;
+  border: 1px solid #e7e7e7;
+  border-radius: 6px;
+  padding: 20px;
+  padding-top: 25px;
+  font-family: 'Roboto';
+  @media (min-width: 768px) {
+    width: 100%;
+  }
+}
+
+.name {
+  font-size: 20px;
+  color: #000000;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.owner {
+  color: #000000;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: max-content max-content;
+
+  div {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.fork, .star {
+  p {
+    margin-left: 10px;
+  }
+}
+
+.fork {
+  margin-left: 45px;
+}
+
+.link {
+  font-size: 36px;
+}
+
+.download {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #000000;
+}
+
+.delete {
+  cursor: pointer;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+
+  svg:hover {
+    transform: scale(2);
+  }
+}

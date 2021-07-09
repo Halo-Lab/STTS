@@ -1,0 +1,31 @@
+
+.list {
+  padding: 0;
+  padding-top: 30px;
+  list-style: none;
+  display: grid;
+  grid-template-columns: max-content max-content;
+  justify-content: center;
+  font-family: 'Roboto';
+  font-size: 14px;
+  a{
+    font-size: 14px !important;
+    padding-left: 20px !important;
+    padding-right:20px !important;
+
+    @media (min-width: 768px) {
+      font-size: 20px !important;
+      padding-left:30px !important;
+      padding-right:30px !important;
+    }
+  }
+  @media (min-width: 768px) {
+    grid-column-gap: 40px;
+  }
+  @media (min-width: 1024px) {
+    grid-column-gap: 120px;
+  }
+}
+.link {
+  border: 1px solig red;
+}
