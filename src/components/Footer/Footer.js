@@ -11,14 +11,14 @@ const Footer = () => {
   return (
     <footer className={s.wrap}>
 
-        <div className={s.content}>
+        <a href={'https://www.halo-lab.com/'} className={s.content}>
 
           <p>
             With
           </p>
 
           <div className={s.heart}>
-            <img src={heart}/>
+            <p>&#x2764;&#xFE0F;</p>
           </div>
 
           <p>from</p>
@@ -30,7 +30,7 @@ const Footer = () => {
           <p className={s.haloLab}>
             HALO LAB
           </p>
-        </div>
+        </a>
     </footer>
   )
 }

@@ -37,7 +37,8 @@
   margin-top: 20px;
   row-gap: 10px;
   @media (min-width: 768px) {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, max-content);
+    column-gap: 35px;
     grid-column: 2/3;
   }
 }

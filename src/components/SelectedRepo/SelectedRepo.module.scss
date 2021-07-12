@@ -53,6 +53,9 @@
   color: #000000;
   font-weight: 600;
   margin-bottom: 10px;
+  &:hover{
+    text-decoration:underline ;
+  }
 }
 
 .owner {
@@ -80,21 +83,6 @@
   height: 24px;
   margin-right: 7px;
 }
-
-//.fork, .star,.downloads {
-//  p {
-//    margin-left: 10px;
-//  }
-//}
-//
-//.fork {
-//  margin-left: 45px;
-//}
-//.downloads{
-//  margin-left: 45px;
-//}
-
-
 
 
 .delete {

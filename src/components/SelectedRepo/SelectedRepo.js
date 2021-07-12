@@ -9,6 +9,7 @@ import actions from "../../redux/gitHub/actions";
 import Chart from "./Chart";
 import {listpackagesWithDownloadStats} from "../../redux/gitHub/selectors";
 import IconDownload from "../assets/IconDownload/IconDownload";
+import IconIssue from "../assets/IconIssue/IconIssue";
 
 const SelectedRepo = () => {
 
@@ -32,7 +33,7 @@ const SelectedRepo = () => {
           {selectedlist.map(el => (
 
             <li className={s.item}>
-              <p className={s.name}>{el.name}</p>
+              <a href={el?.html_url??'/'} className={s.name}>{el.name}</a>
               <p className={s.owner}>{el.owner.login}</p>
 
               <div className={s.stats}>
@@ -51,19 +52,20 @@ const SelectedRepo = () => {
                   <p>{el.forks}</p>
                 </div>
 
-                <div className={s.issue}>
-                  <div className={s.icon}>
-                    {/*<IconFork color={'#0e43ff'}/>*/}
-                    ISS
-                  </div>
-                  <p>{el.open_issues}</p>
-                </div>
+
 
                 <div className={s.downloads}>
                   <div className={s.icon}>
                     <IconDownload/>
                   </div>
                   <p>{weeklyDownload(el.dataWeekly)}</p>
+                </div>
+
+                <div className={s.issue}>
+                  <div className={s.icon}>
+                    <IconIssue/>
+                  </div>
+                  <p>{el.open_issues}</p>
                 </div>
 
               </div>

@@ -32,6 +32,7 @@
   border: 1px solid #e7e7e7;
   border-radius: 6px;
   font-size: 18px;
+  font-family: 'Roboto';
   @media (min-width: 768px) {
     width: 560px;
   }
@@ -45,7 +46,10 @@
 }
 
 .form__input:focus {
-  outline: 1px solid rgb(50, 90, 223);
+  border: 1px solid rgb(50, 90, 223);
+  outline: none;
+  border-radius: 6px;
+
 }
 
 
