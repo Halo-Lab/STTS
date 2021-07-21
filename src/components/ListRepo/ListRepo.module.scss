@@ -38,7 +38,7 @@
   align-items: center;
   column-gap: 15px;
 
-  p{
+  p {
     max-width: 220px;
 
     @media (min-width: 360px) {
@@ -49,6 +49,7 @@
     }
 
   }
+
   @media (min-width: 768px) {
     height: 64px;
     column-gap: 30px;
@@ -87,7 +88,21 @@
 
 }
 
-.btn {
+.arrowDis, .arrowDisNext {
+  width: 12px;
+  height: 12px;
+  border-left: 2px solid #d5d5d5;
+  border-top: 2px solid #d5d5d5;
+  transform: rotateZ(-45deg);
+}
+
+.arrowDisNext {
+  transform: rotateZ(-225deg);
+
+}
+
+
+.btn, .disabled {
   width: 150px;
   height: 40px;
   margin-right: 15px;
@@ -105,8 +120,12 @@
   align-items: center;
   justify-content: center;
   column-gap: 10px;
-  margin-bottom: 50px;
+  margin-bottom: 70px;
+}
 
+.disabled {
+  border: 1px solid #d5d5d5;
+  color: #d5d5d5;
 }
 
 .btn:hover {

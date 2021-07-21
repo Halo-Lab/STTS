@@ -1,5 +1,9 @@
 .wrap{
-  padding-bottom: 50px;
+  padding-bottom: 20px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .content{
   display: flex;

@@ -8,81 +8,88 @@ import User from "../User/User";
 import {getUser, listPackages} from "../../redux/gitHub/selectors";
 import IconAdd from "../assets/IconAdd/IconAdd";
 import IconAdded from "../assets/IconAdded/IconAdded";
+import classnames from 'classnames';
 
 const ListRepo = () => {
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
-  const [page, setPage] = useState(1);
-  const packages = useSelector((state) => state.packages.packages);
-  const userData = useSelector(getUser);
+    const [page, setPage] = useState(1);
+    const packages = useSelector((state) => state.packages.packages);
+    const userData = useSelector(getUser);
 
-  const list = useSelector(listPackages);
+    const list = useSelector(listPackages);
 
 
-  const listPackagesWithLabel = packages.map(el => {
-      if (list.includes(el.full_name)) return {...el, added: true};
-      return {...el, added: false};
+    const listPackagesWithLabel = packages.map(el => {
+            if (list.includes(el.full_name)) return {...el, added: true};
+            return {...el, added: false};
+        }
+    )
+
+
+    const handleClick = (e) => {
+        const item = (e.currentTarget.dataset.name);
+        dispatch(actions.addItemPackage(item));
     }
-  )
 
 
-  const handleClick = (e) => {
-    const item = (e.currentTarget.dataset.name);
-    dispatch(actions.addItemPackage(item));
-  }
+    const prevPage = () => {
+        if (page === 1) return;
+        setPage((prevPage) => prevPage - 1);
+    }
+    const nextPage = () => {
+        setPage((prevPage) => prevPage + 1);
+    }
+
+    useEffect(() => {
+        if (page < 1) return;
+        if (packages.length === 0) return;
+        dispatch(operations.fetchPackages(userData.login, page));
+    }, [page]);
 
 
-  const prevPage = () => {
-    if (page === 1) return;
-    setPage((prevPage) => prevPage - 1);
-  }
-  const nextPage = () => {
-    setPage((prevPage) => prevPage + 1);
-  }
-
-  useEffect(() => {
-    if (page < 1) return;
-    if (packages.length === 0) return;
-    dispatch(operations.fetchPackages(userData.login, page));
-  }, [page]);
+    console.log(page);
 
 
-  return (
-    <section className={s.container}>
-      <Form placeholder='Organization Name' type='findRepo' name='Find'/>
-      {packages.length > 0 && <User data={userData}/>}
+    const disabled = classnames(s.disabled, s.btn);
 
-      <ul className={s.list}>
-        {listPackagesWithLabel.map(el => (
+    return (
+        <section className={s.container}>
+            <Form placeholder='Organization Name' type='findRepo' name='Find'/>
+            {packages.length > 0 && <User data={userData}/>}
 
-          <li style={el.added ? {borderLeft: '8px solid #2CD351'} : null} className={s.item} key={el.id}>
-            <p>
-              {el.name}
-            </p>
-            <div className={s.btnAdd} onClick={el.added ? () => {} : handleClick} data-name={el.full_name}>
-              {el.added ? <IconAdded/> : <IconAdd/>}
-            </div>
-          </li>
-        ))}
-      </ul>
+            <ul className={s.list}>
+                {listPackagesWithLabel.map(el => (
 
-      {listPackagesWithLabel.length > 0 && <div className={s.wrapBtns}>
+                    <li style={el.added ? {borderLeft: '8px solid #2CD351'} : null} className={s.item} key={el.id}>
+                        <p>
+                            {el.name}
+                        </p>
+                        <div className={s.btnAdd} onClick={el.added ? () => {
+                        } : handleClick} data-name={el.full_name}>
+                            {el.added ? <IconAdded/> : <IconAdd/>}
+                        </div>
+                    </li>
+                ))}
+            </ul>
 
-        <div className={s.btn} onClick={prevPage}>
-          <div className={s.arrowPrev}></div>
-          <span>Previous</span>
-        </div>
+            {(listPackagesWithLabel.length === 30||page>1) && <div className={s.wrapBtns}>
 
-        <div className={s.btn} onClick={listPackagesWithLabel.length >= 30 && nextPage}>
-          <span>Next</span>
-          <div className={s.arrowNext}></div>
-        </div>
+                <div className={page === 1 ? s.disabled : s.btn} onClick={prevPage}>
+                    <div className={page === 1 ? s.arrowDis : s.arrowPrev}></div>
+                    <span>Previous</span>
+                </div>
+
+                <div className={listPackagesWithLabel.length ===30?s.btn:s.disabled} onClick={listPackagesWithLabel.length >= 30 && nextPage}>
+                    <span>Next</span>
+                    <div className={listPackagesWithLabel.length ===30?s.arrowNext:s.arrowDisNext}></div>
+                </div>
 
 
-      </div>}
+            </div>}
 
-    </section>
-  )
+        </section>
+    )
 }
 
 export default ListRepo;
