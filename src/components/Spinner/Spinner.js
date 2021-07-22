@@ -25,7 +25,7 @@ export const Spinner = () => {
             setTop(46*Math.sin(f));
             setLeft(46*Math.cos(f));
 
-        }, 20);
+        }, 8);
         return () => clearInterval(id);
     }, []);
 
