@@ -5,10 +5,11 @@ import actions from "../../redux/gitHub/actions";
 import Form from "../Form/Form";
 import s from './ListRepo.module.scss';
 import User from "../User/User";
-import {getUser, listPackages} from "../../redux/gitHub/selectors";
+import {getUser, listPackages, loading} from "../../redux/gitHub/selectors";
 import IconAdd from "../assets/IconAdd/IconAdd";
 import IconAdded from "../assets/IconAdded/IconAdded";
-import classnames from 'classnames';
+import {Spinner} from "../Spinner/Spinner";
+
 
 const ListRepo = () => {
     const dispatch = useDispatch();
@@ -16,7 +17,7 @@ const ListRepo = () => {
     const [page, setPage] = useState(1);
     const packages = useSelector((state) => state.packages.packages);
     const userData = useSelector(getUser);
-
+    const loadings = useSelector(loading);
     const list = useSelector(listPackages);
 
 
@@ -47,12 +48,6 @@ const ListRepo = () => {
         dispatch(operations.fetchPackages(userData.login, page));
     }, [page]);
 
-
-    console.log(page);
-
-
-    const disabled = classnames(s.disabled, s.btn);
-
     return (
         <section className={s.container}>
             <Form placeholder='Organization Name' type='findRepo' name='Find'/>
@@ -73,21 +68,22 @@ const ListRepo = () => {
                 ))}
             </ul>
 
-            {(listPackagesWithLabel.length === 30||page>1) && <div className={s.wrapBtns}>
+            {(listPackagesWithLabel.length === 30 || page > 1) && <div className={s.wrapBtns}>
 
                 <div className={page === 1 ? s.disabled : s.btn} onClick={prevPage}>
                     <div className={page === 1 ? s.arrowDis : s.arrowPrev}></div>
                     <span>Previous</span>
                 </div>
 
-                <div className={listPackagesWithLabel.length ===30?s.btn:s.disabled} onClick={listPackagesWithLabel.length >= 30 && nextPage}>
+                <div className={listPackagesWithLabel.length === 30 ? s.btn : s.disabled}
+                     onClick={listPackagesWithLabel.length >= 30 && nextPage}>
                     <span>Next</span>
-                    <div className={listPackagesWithLabel.length ===30?s.arrowNext:s.arrowDisNext}></div>
+                    <div className={listPackagesWithLabel.length === 30 ? s.arrowNext : s.arrowDisNext}></div>
                 </div>
 
 
             </div>}
-
+            {loadings&& <Spinner/>}
         </section>
     )
 }

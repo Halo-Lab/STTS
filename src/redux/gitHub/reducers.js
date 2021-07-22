@@ -31,4 +31,17 @@ const selectedPackages=createReducer([],{
   [actions.deletePackage]:updateList,
 })
 
-export default combineReducers({packages,selectedPackagesList,selectedPackages,user,weeklyDownload});
+const loading = createReducer(false, {
+  [actions.getPackagesRequest]:()=>true,
+  [actions.getPackagesSuccess]:()=>false,
+  [actions.getPackagesError]:()=>false,
+
+  [actions.getItemPackageRequest]:()=>true,
+  [actions.getItemPackageSuccess]:()=>false,
+  [actions.getItemPackageError]:()=>false,
+
+
+
+});
+
+export default combineReducers({packages,selectedPackagesList,selectedPackages,user,weeklyDownload,loading});

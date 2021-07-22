@@ -20,6 +20,7 @@
   row-gap: 16px;
   justify-items: center;
   margin-top: 40px;
+  padding-bottom: 70px;
   @media (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
     column-gap: 30px;

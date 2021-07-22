@@ -8,6 +8,7 @@ export const getUser = (state) => state.packages.user;
 
 export const getWeeklyDownLoad = (state) => state.packages.weeklyDownload;
 
+export const loading=(state)=>state.packages.loading;
 
 export const getList = createSelector(
   [listPackages, fulllistPackages],
@@ -28,6 +29,5 @@ export const listpackagesWithDownloadStats = createSelector(
       return {...el, dataWeekly};
     })
 
-    // return newData;
   }
 )

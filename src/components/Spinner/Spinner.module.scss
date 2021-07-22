@@ -1,0 +1,35 @@
+.star {
+  position: absolute;
+  top: 94px;
+  left: 86px;
+  width:70px;
+  height: 70px;
+}
+
+.around {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 250px;
+}
+
+.wrap{
+  position: fixed;
+background-color: rgba(8, 21, 64, 0.4);
+  width: 100vw;
+  height: 100vh;
+  top: 50%;
+  left: 50%;
+  z-index: 9999;
+  transform: translate(-50%,-50%);
+}
+
+.spinner{
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
