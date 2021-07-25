@@ -14,11 +14,13 @@
 }
 
 .list {
+  margin: 0;
   padding: 0;
   list-style: none;
   display: flex;
   flex-wrap: wrap;
   margin-top: 40px;
+  padding-bottom: 40px;
 }
 
 .item {

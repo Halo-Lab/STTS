@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {useDispatch, useSelector} from 'react-redux';
 import s from './SelectedRepo.module.scss';
 import Form from "../Form/Form";
@@ -7,9 +7,12 @@ import IconStar from "../assets/IconStar/IconStar";
 import IconDelete from "../assets/IconDelete/IconDelete";
 import actions from "../../redux/gitHub/actions";
 import Chart from "./Chart";
-import {listpackagesWithDownloadStats} from "../../redux/gitHub/selectors";
+import {listpackagesWithDownloadStats, loading} from "../../redux/gitHub/selectors";
 import IconDownload from "../assets/IconDownload/IconDownload";
 import IconIssue from "../assets/IconIssue/IconIssue";
+import {Spinner} from "../Spinner/Spinner";
+import {toast, ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const SelectedRepo = () => {
 
@@ -17,7 +20,15 @@ const SelectedRepo = () => {
 
 
   const selectedlist = useSelector(listpackagesWithDownloadStats);
+    const loadings = useSelector(loading);
+    const err = useSelector(state => state.packages.error);
+    useEffect(() => {
+        if (err !== false) {
+            toast('There is no such repository or network error');
+            dispatch(actions.getPackagesError(false));
+        }
 
+    }, [err]);
   const onHandleDelete = (name) => dispatch(actions.deletePackage(name));
 
   const weeklyDownload = (data) => {
@@ -79,11 +90,12 @@ const SelectedRepo = () => {
                 <IconDelete/>
               </div>
 
-              {/*<a clasName={s.link} href={el.html_url}>Link</a>*/}
             </li>
           ))}
         </ul>
 
+          {loadings && <Spinner/>}
+          <ToastContainer/>
 
       </div>
     )

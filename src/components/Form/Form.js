@@ -16,8 +16,10 @@ const Form = ({placeholder = '', name, type = 'add'}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    (type === 'findRepo') ? dispatch(operations.fetchPackages(repo)) : dispatch(actions.addItemPackage(repo));
-    setRepo('')
+    // (type === 'findRepo') ? dispatch(operations.fetchPackages(repo)) : dispatch(actions.addItemPackage(repo));
+      (type === 'findRepo') ? dispatch(operations.fetchPackages(repo)) : dispatch(operations.fetchSinglePackage(repo));
+
+      setRepo('')
   }
 
   return (

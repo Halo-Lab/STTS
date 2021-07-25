@@ -17,12 +17,17 @@ const fetchPackages = (repo,page=1) => async (dispatch) => {
 const fetchSinglePackage= (name) => async (dispatch) => {
   dispatch(actions.getItemPackageRequest());
   try {
+
     const {data} = await axios.get(`https://api.github.com/repos/${name}`);
+    console.log(data)
     dispatch(actions.getItemPackageSuccess(data));
+    dispatch(actions.addItemPackage(name));
   } catch (error) {
     dispatch(actions.getItemPackageError(error));
   }
 };
+
+
 
 const getWeeklyDownload= (name) => async (dispatch) => {
   dispatch(actions.getWeeklyDownloadRequest());

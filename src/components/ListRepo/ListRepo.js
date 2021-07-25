@@ -9,6 +9,8 @@ import {getUser, listPackages, loading} from "../../redux/gitHub/selectors";
 import IconAdd from "../assets/IconAdd/IconAdd";
 import IconAdded from "../assets/IconAdded/IconAdded";
 import {Spinner} from "../Spinner/Spinner";
+import {toast, ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const ListRepo = () => {
@@ -19,6 +21,17 @@ const ListRepo = () => {
     const userData = useSelector(getUser);
     const loadings = useSelector(loading);
     const list = useSelector(listPackages);
+    const err = useSelector(state => state.packages.error);
+
+    useEffect(() => {
+        if (err !== false) {
+            toast('There is no such repository or network error');
+            dispatch(actions.getPackagesError(false));
+        }
+
+    }, [err]);
+
+
 
 
     const listPackagesWithLabel = packages.map(el => {
@@ -83,7 +96,8 @@ const ListRepo = () => {
 
 
             </div>}
-            {loadings&& <Spinner/>}
+            {loadings && <Spinner/>}
+            <ToastContainer/>
         </section>
     )
 }
