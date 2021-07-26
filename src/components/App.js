@@ -1,7 +1,7 @@
 import React, {Suspense,lazy, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import operations from '../redux/gitHub/operations';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {BrowserRouter, HashRouter, Route, Switch} from 'react-router-dom';
 import Navigation from './Navigation/Navigation';
 import {fulllistPackages, getList, listPackages} from '../redux/gitHub/selectors';
 import Header from './Header/Header';
@@ -33,7 +33,7 @@ const App = () => {
 
     return (
         // Basename is needed for github pages, as this app is working on https://halo-lab.github.io/STTS
-        <BrowserRouter basename="STTS/">
+        <HashRouter basename="STTS/">
             <div className={s.container}>
                 <Header/>
                 <Navigation/>
@@ -45,7 +45,7 @@ const App = () => {
                 </Suspense>
                 <Footer/>
             </div>
-        </BrowserRouter>
+        </HashRouter>
     );
 };
 
