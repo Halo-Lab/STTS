@@ -9,11 +9,11 @@ import Footer from './Footer/Footer';
 import s from './App.module.scss';
 import {Spinner} from "./Spinner/Spinner";
 
-// const ListRepo = lazy(() => import('./ListRepo/ListRepo'));
-// const SelectedRepo = lazy(() => import('./SelectedRepo/SelectedRepo'));
-
-import ListRepo from "./ListRepo/ListRepo";
-import SelectedRepo from "./SelectedRepo/SelectedRepo";
+const ListRepo = lazy(() => import('./ListRepo/ListRepo'));
+const SelectedRepo = lazy(() => import('./SelectedRepo/SelectedRepo'));
+//
+// import ListRepo from "./ListRepo/ListRepo";
+// import SelectedRepo from "./SelectedRepo/SelectedRepo";
 
 const App = () => {
     const dispatch = useDispatch();
