@@ -25,14 +25,10 @@ const Chart = ({arr}) => {
       data={data}
       options={{
         maintainAspectRatio: false,
-        title: {
-          display: true,
-          text: "Weekly downLoad",
-          fontSize: 25
-        },
-        legend: {
-          display: true,
-          position: "top"
+        plugins:{
+            legend: {
+                display: false,
+            }
         }
       }}
     />

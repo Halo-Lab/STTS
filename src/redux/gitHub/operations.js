@@ -19,7 +19,6 @@ const fetchSinglePackage= (name) => async (dispatch) => {
   try {
 
     const {data} = await axios.get(`https://api.github.com/repos/${name}`);
-    console.log(data)
     dispatch(actions.getItemPackageSuccess(data));
     dispatch(actions.addItemPackage(name));
   } catch (error) {

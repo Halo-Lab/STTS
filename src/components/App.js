@@ -22,7 +22,6 @@ const App = () => {
     const listforReques = selectedPackages.length > 0 ? arrayPackages : list;
     useEffect(() => {
         listforReques.forEach((el) => {
-            console.log(el)
             dispatch(operations.fetchSinglePackage(el));
             dispatch(operations.getWeeklyDownload(el.split('/')[1]));
         });
