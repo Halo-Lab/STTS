@@ -33,7 +33,7 @@ const App = () => {
 
     return (
         // Basename is needed for github pages, as this app is working on https://halo-lab.github.io/STTS
-        <HashRouter basename="STTS/">
+        <HashRouter hashType='noslash' basename="STTS/">
             <div className={s.container}>
                 <Header/>
                 <Navigation/>
