@@ -4,17 +4,6 @@ object-assign
 @license MIT
 */
 
-/*!
- * Chart.js v3.4.1
- * https://www.chartjs.org
- * (c) 2021 Chart.js Contributors
- * Released under the MIT License
- */
-
-/**
- * @preserve date-and-time (c) KNOWLEDGECODE | MIT
- */
-
 /** @license React v0.20.2
  * scheduler.production.min.js
  *
