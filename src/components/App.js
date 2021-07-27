@@ -43,7 +43,7 @@ const App = () => {
                         <Route path={'/all'} exact component={ListRepo}/>
                     </Switch>
                 </Suspense>
-                <Footer/>
+                {/*<Footer/>*/}
             </div>
         </HashRouter>
     );
