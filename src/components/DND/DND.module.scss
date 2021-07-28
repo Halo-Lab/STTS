@@ -34,16 +34,28 @@
     grid-template-columns: repeat(4, 1fr);
   }
 }
+.listDrag{
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns:1fr 1fr 1fr;
+  column-gap: 30px;
+  row-gap: 30px;
+}
 
+.column{
+
+}
 .item {
   position: relative;
-  width: 87%;
+  width: 100%;
   min-height: 260px;
   border: 1px solid #e7e7e7;
   border-radius: 6px;
   padding: 20px;
   padding-top: 25px;
   font-family: 'Roboto';
+  margin-bottom: 30px;
   @media (min-width: 768px) {
     width: 100%;
   }

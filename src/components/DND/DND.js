@@ -1,15 +1,14 @@
-import React, { useState } from "react";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import React, {useEffect, useState} from "react";
+import {DragDropContext, Draggable, Droppable} from "react-beautiful-dnd";
 import s from './DND.module.scss';
+import IconStar from "../assets/IconStar/IconStar";
+import IconFork from "../assets/IconFork/IconFork";
+import IconDownload from "../assets/IconDownload/IconDownload";
+import IconIssue from "../assets/IconIssue/IconIssue";
+import IconDelete from "../assets/IconDelete/IconDelete";
+import Chart from "./Chart";
 
 
-
-// fake data generator
-const getItems = (count, offset = 0) =>
-    Array.from({ length: count }, (v, k) => k).map((k) => ({
-        id: `item-${k + offset}-${new Date().getTime()}`,
-        content: `item ${k + offset}`
-    }));
 
 const reorder = (list, startIndex, endIndex) => {
     const result = Array.from(list);
@@ -36,38 +35,31 @@ const move = (source, destination, droppableSource, droppableDestination) => {
     return result;
 };
 
-const grid = 8;
 
 const getItemStyle = (isDragging, draggableStyle) => ({
-    // some basic styles to make the items look a bit nicer
-    userSelect: "none",
-    padding: grid * 2,
-    margin: `0 0 ${grid}px 0`,
-
+    // userSelect: "none",
     // change background colour if dragging
-    background: isDragging ? "lightgreen" : "grey",
-
-    // styles we need to apply on draggables
+    background: isDragging ? "rgba(56,97,225,0.51)" : "transparent",
     ...draggableStyle
 });
 
-const getListStyle = (isDraggingOver) => ({
-    background: isDraggingOver ? "lightblue" : "lightgrey",
-    padding: grid,
-    width: 250
-});
 
-const QuoteApp=({data,onHandleDelete,weeklyDownload})=> {
+const QuoteApp = ({data, onHandleDelete, weeklyDownload}) => {
     const [state, setState] = useState(data);
-    console.log(data)
+
+    useEffect(() => {
+
+        setState(data);
+    }, [data]);
+
+
     function onDragEnd(result) {
-        const { source, destination } = result;
+        const {source, destination} = result;
         // dropped outside the list
         if (!destination) {
             return;
         }
 
-        console.log(state)
 
         const sInd = +source.droppableId;
         const dInd = +destination.droppableId;
@@ -86,16 +78,17 @@ const QuoteApp=({data,onHandleDelete,weeklyDownload})=> {
             setState(newState.filter((group) => group.length));
         }
     }
+
     return (
         <div>
-            <ul style={{ display: "flex" }}>
+            <ul className={s.listDrag}>
                 <DragDropContext onDragEnd={onDragEnd}>
                     {state.map((el, ind) => (
                         <Droppable key={ind} droppableId={`${ind}`}>
                             {(provided, snapshot) => (
                                 <div
+                                    className={s.column}
                                     ref={provided.innerRef}
-                                    style={getListStyle(snapshot.isDraggingOver)}
                                     {...provided.droppableProps}
                                 >
                                     {el.map((item, index) => (
@@ -115,7 +108,49 @@ const QuoteApp=({data,onHandleDelete,weeklyDownload})=> {
                                                         provided.draggableProps.style
                                                     )}
                                                 >
-z
+                                                    <a href={item?.html_url ?? '/'} className={s.name}>{item.name}</a>
+                                                    <p className={s.owner}>{item?.owner?.login}</p>
+                                                    <div className={s.stats}>
+
+                                                        <div className={s.star}>
+                                                            <div className={s.icon}>
+                                                                <IconStar/>
+                                                            </div>
+                                                            <p>{item?.stargazers_count}</p>
+                                                        </div>
+
+                                                        <div className={s.fork}>
+                                                            <div className={s.icon}>
+                                                                <IconFork color={'#0e43ff'}/>
+                                                            </div>
+                                                            <p>{item?.forks}</p>
+                                                        </div>
+
+                                                        <div className={s.downloads}>
+                                                            <div className={s.icon}>
+                                                                <IconDownload/>
+                                                            </div>
+                                                            <p>{weeklyDownload(item?.dataWeekly) ?? '-'}</p>
+                                                        </div>
+
+                                                        <div className={s.issue}>
+                                                            <div className={s.icon}>
+                                                                <IconIssue/>
+                                                            </div>
+                                                            <p>{item?.open_issues}</p>
+                                                        </div>
+
+                                                    </div>
+
+                                                    {item?.dataWeekly && <div className={s.chart}>
+                                                        <Chart arr={item.dataWeekly}/>
+                                                    </div>}
+
+                                                    <div onClick={() => onHandleDelete(item?.full_name)}
+                                                         className={s.delete}>
+                                                        <IconDelete/>
+                                                    </div>
+
                                                 </div>
                                             )}
                                         </Draggable>
