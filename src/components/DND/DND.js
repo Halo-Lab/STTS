@@ -7,7 +7,11 @@ import IconDownload from "../assets/IconDownload/IconDownload";
 import IconIssue from "../assets/IconIssue/IconIssue";
 import IconDelete from "../assets/IconDelete/IconDelete";
 import Chart from "./Chart";
+import {useDispatch, useSelector} from "react-redux";
+import {dndListLocal, listpackagesWithDownloadStats, smth} from "../../redux/gitHub/selectors";
+import actions from "../../redux/gitHub/actions";
 
+import {reactLocalStorage} from 'reactjs-localstorage';
 
 
 const reorder = (list, startIndex, endIndex) => {
@@ -39,19 +43,61 @@ const move = (source, destination, droppableSource, droppableDestination) => {
 const getItemStyle = (isDragging, draggableStyle) => ({
     // userSelect: "none",
     // change background colour if dragging
-    background: isDragging ? "rgba(56,97,225,0.51)" : "transparent",
+    background: isDragging ? "rgba(56,97,225,0.35)" : "transparent",
     ...draggableStyle
 });
 
-
-const QuoteApp = ({data, onHandleDelete, weeklyDownload}) => {
+const CardStts = ({data, onHandleDelete, weeklyDownload}) => {
     const [state, setState] = useState(data);
+    const dispatch = useDispatch();
+
+    // const selectedList = useSelector(listpackagesWithDownloadStats);
+    // const dndList = useSelector(state => state.packages.dndList);
+
+    useEffect(() => {
+        setState(data);
+        // console.log('data')
+    }, [data]);
+
+
+
+    // const items = state.map(el => el.map(item => item.full_name));
+    // console.log(items);
+    // dispatch(actions.changePosition(items));
+    // console.log(state)
 
     useEffect(() => {
 
-        setState(data);
-    }, [data]);
+        // const items = state.map(el => el.map(item => item.full_name));
+        // console.log(foo)
+        // console.log(items)
+        // const boo=foo.map(el=>el.map(item=>selectedList.find(pack=>pack.full_name===item)));
+        // console.log(boo);
+        // dispatch(actions.changePosition(items));
 
+        // reactLocalStorage.setObject('foo', items);
+
+
+    }, [state]);
+
+
+    useEffect(()=>{
+        // let {dndList} = JSON.parse(localStorage.getItem('persist:dnd'));
+        // const first=reactLocalStorage.getObject('foo');
+
+        // console.log('first load',first)
+    },[])
+
+    // const items = state.map(el => el.map(item => item.full_name));
+
+    // console.log(dndList.slice(1,dndList.length-1).split(']'));
+
+    // const arrItems=items.flatMap(el=>el.map(item=>item))
+    // const arrDnd=dnd.flatMap(el=>el.map(item=>item));
+   //  for (let x=0;x<arrItems.length;x++){
+   //      if (arrItems[x]!==arrDnd[x]){ dispatch(actions.changePosition(items));}
+   // }
+    console.log(state)
 
     function onDragEnd(result) {
         const {source, destination} = result;
@@ -69,19 +115,24 @@ const QuoteApp = ({data, onHandleDelete, weeklyDownload}) => {
             const newState = [...state];
             newState[sInd] = items;
             setState(newState);
+
+
         } else {
             const result = move(state[sInd], state[dInd], source, destination);
             const newState = [...state];
             newState[sInd] = result[sInd];
             newState[dInd] = result[dInd];
 
+            // const items = newState.map(el => el.map(item => item.full_name));
+            // dispatch(actions.changePosition(items));
             setState(newState.filter((group) => group.length));
         }
     }
 
+
     return (
         <div>
-            <ul className={s.listDrag}>
+            <ul style={{gridTemplateColumns: `repeat(${state?.length},1fr)`}} className={s.listDrag}>
                 <DragDropContext onDragEnd={onDragEnd}>
                     {state.map((el, ind) => (
                         <Droppable key={ind} droppableId={`${ind}`}>
@@ -165,5 +216,5 @@ const QuoteApp = ({data, onHandleDelete, weeklyDownload}) => {
         </div>
     );
 }
-export default QuoteApp;
+export default CardStts;
 

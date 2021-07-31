@@ -21,6 +21,8 @@ const deletePackage = createAction('deletePackage');
 
 const addItemPackage = createAction('addItemPackage');
 
+const changePosition=createAction('changePosition');
+
 export default {
   getWeeklyDownloadRequest,
   getWeeklyDownloadSuccess,
@@ -33,5 +35,6 @@ export default {
   addItemPackage,
   getItemPackageRequest,
   getItemPackageSuccess,
-  getItemPackageError
+  getItemPackageError,
+  changePosition
 }
