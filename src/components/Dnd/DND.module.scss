@@ -1,0 +1,106 @@
+.container {
+  padding-left: 16px;
+  padding-right: 16px;
+  @media (min-width: 768px) {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  @media (min-width: 1024px) {
+    padding-left: 112px;
+    padding-right: 112px;
+  }
+
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  touch-action: none;
+  margin-top: 40px;
+  min-height: 400px;
+
+
+}
+
+.dropzone{
+  min-height: 400px;
+
+
+}
+
+
+.item {
+  font-family: 'Roboto';
+  min-height: 280px;
+  border: 1px solid #e7e7e7;
+  border-radius: 6px;
+  padding:20px;
+
+}
+
+
+  .gridItem {
+    width: 100%;
+    height: 100%;
+
+
+  }
+
+
+.name {
+  font-size: 20px;
+  color: #000000;
+  font-weight: 600;
+  margin-bottom: 10px;
+  padding-right: 10px;
+  &:hover{
+    text-decoration:underline ;
+  }
+}
+
+.owner {
+  color: #000000;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: max-content max-content max-content max-content;
+  column-gap: 20px;
+  justify-content: center;
+  @media (min-width: 768px) {
+    column-gap: 45px;
+  }
+  div {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.icon{
+  width: 24px;
+  height: 24px;
+  margin-right: 7px;
+}
+
+
+.delete {
+  cursor: pointer;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+
+  svg:hover {
+    transform: scale(2);
+  }
+}
+
+.chart{
+  margin-top: 30px;
+  width: 100%;
+  height: 60%;
+  color: #3861e1;
+  //padding-bottom: 20px;
+}
