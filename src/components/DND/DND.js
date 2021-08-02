@@ -97,7 +97,7 @@ const CardStts = ({data, onHandleDelete, weeklyDownload}) => {
    //  for (let x=0;x<arrItems.length;x++){
    //      if (arrItems[x]!==arrDnd[x]){ dispatch(actions.changePosition(items));}
    // }
-    console.log(state)
+   //  console.log(state)
 
     function onDragEnd(result) {
         const {source, destination} = result;
@@ -123,7 +123,8 @@ const CardStts = ({data, onHandleDelete, weeklyDownload}) => {
             newState[sInd] = result[sInd];
             newState[dInd] = result[dInd];
 
-            // const items = newState.map(el => el.map(item => item.full_name));
+            const items = newState.map(el => el.map(item => item.full_name));
+            console.log(items);
             // dispatch(actions.changePosition(items));
             setState(newState.filter((group) => group.length));
         }

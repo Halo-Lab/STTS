@@ -30,7 +30,7 @@ const weeklyDownload=createReducer([],{
 })
 
 
-const selectedPackagesList=createReducer([[],[],[]],{
+const selectedPackagesList=createReducer([],{
   [actions.addItemPackage]:addItemPackage,
   [actions.deletePackage]:deletePackages,
 })
@@ -55,16 +55,8 @@ const loading = createReducer(false, {
 const error=createReducer(false,{
   [actions.getPackagesError]:(_,{payload})=>payload,
   [actions.getItemPackageError]:(_,{payload})=>{
-    console.log(payload);
     return payload},
 
 })
-
-
-// const dnd=(state,{payload})=>payload;
-//
-// const dndList=createReducer([],{
-//   [actions.changePosition]:dnd,
-// })
 
 export default combineReducers({packages,selectedPackagesList,selectedPackages,user,weeklyDownload,loading,error});

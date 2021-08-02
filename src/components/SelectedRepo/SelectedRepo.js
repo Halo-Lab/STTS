@@ -29,9 +29,9 @@ const SelectedRepo = () => {
 
 
     const dispatch = useDispatch();
-    //
-    const dnd=useSelector(smth);
-    console.log(dnd);
+
+    // const dnd=useSelector(smth);
+    // console.log(dnd);
 
 
     const selectedlist = useSelector(listpackagesWithDownloadStats);
@@ -47,9 +47,6 @@ const SelectedRepo = () => {
 
     }, [err]);
 
-// useEffect(()=>{
-//     setDataList(dnd);
-// },[])
 
 
 
@@ -63,8 +60,8 @@ useEffect(()=>{
 },[])
 
 
-    // const size = breakpoint==='mobile'?1:breakpoint==='tablet'?2:breakpoint==='desktop'?3:4;
-    // const compressedList = twoDimensionalArray(selectedlist, size);
+    const size = breakpoint==='mobile'?1:breakpoint==='tablet'?2:breakpoint==='desktop'?3:4;
+    const compressedList = twoDimensionalArray(selectedlist, size);
 
     // if (dnd.length===0) setDataList(compressedList);
     // console.log(dnd.length===0)
@@ -78,7 +75,7 @@ useEffect(()=>{
 
             <ToastContainer/>
 
-            {/*<CardStts  data={compressedList} onHandleDelete={onHandleDelete} weeklyDownload={weeklyDownload}/>*/}
+            <CardStts  data={compressedList} onHandleDelete={onHandleDelete} weeklyDownload={weeklyDownload}/>
         </div>
     )
 }
