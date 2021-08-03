@@ -11,9 +11,7 @@ import {Spinner} from "./Spinner/Spinner";
 
 const ListRepo = lazy(() => import('./ListRepo/ListRepo'));
 const SelectedRepo = lazy(() => import('./SelectedRepo/SelectedRepo'));
-//
-// import ListRepo from "./ListRepo/ListRepo";
-// import SelectedRepo from "./SelectedRepo/SelectedRepo";
+
 
 const App = () => {
     const dispatch = useDispatch();
@@ -22,10 +20,13 @@ const App = () => {
 
     const arrayPackages = useSelector(getList);
     const listforReques = selectedPackages.length > 0 ? arrayPackages : list;
+
     useEffect(() => {
+
         listforReques.forEach((el) => {
             dispatch(operations.fetchSinglePackage(el));
-            dispatch(operations.getWeeklyDownload(el.split('/')[1]));
+            // eslint-disable-next-line no-unused-expressions
+              el?dispatch(operations.getWeeklyDownload(el.split('/')[1])):null;
         });
     }, [list]);
 
@@ -43,7 +44,7 @@ const App = () => {
                         <Route path={'/all'} exact component={ListRepo}/>
                     </Switch>
                 </Suspense>
-                <Footer/>
+                {/*<Footer/>*/}
             </div>
         </HashRouter>
     );

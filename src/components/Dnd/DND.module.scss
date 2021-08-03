@@ -33,16 +33,17 @@
 .item {
   font-family: 'Roboto';
   min-height: 280px;
-  border: 1px solid #e7e7e7;
-  border-radius: 6px;
-  padding:20px;
+
 
 }
 
 
   .gridItem {
-    width: 100%;
-    height: 100%;
+    width: calc(100% - 14px);
+    height: 95%;
+    border: 1px solid #e7e7e7;
+    border-radius: 6px;
+    padding:20px;
 
 
   }
@@ -71,7 +72,13 @@
   column-gap: 20px;
   justify-content: center;
   @media (min-width: 768px) {
-    column-gap: 45px;
+    column-gap: 35px;
+  }
+  @media (min-width: 1024px) {
+    column-gap: 20px;
+  }
+  @media (min-width: 1440px) {
+    column-gap: 35px;
   }
   div {
     display: flex;
@@ -90,7 +97,7 @@
   cursor: pointer;
   position: absolute;
   top: 16px;
-  right: 16px;
+  right: 30px;
 
   svg:hover {
     transform: scale(2);

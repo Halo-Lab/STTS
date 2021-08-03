@@ -8,8 +8,10 @@ const getpackages = (_, {payload}) => payload;
 
 const addItemPackage = (state, {payload}) =>{
 
+  if (typeof payload!=='string')return payload;
+
   const temp=state.find(el=>el===payload);
-  if(temp) return state;else return [payload,...state];
+  if(temp) return state;else return [...state,payload];
 }
 
 

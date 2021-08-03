@@ -20,14 +20,20 @@ export const getList = createSelector(
 )
 
 export const listpackagesWithDownloadStats = createSelector(
-  [fulllistPackages, getWeeklyDownLoad],
-  (selectedPackages, weeklyDownload) => {
-    return selectedPackages.map(el => {
+  [fulllistPackages, getWeeklyDownLoad,listPackages],
+  (selectedPackages, weeklyDownload,selectedPackagesList) => {
 
+     const foo = selectedPackages.map(el => {
       const dataWeekly = weeklyDownload.find(item => item.package === el.name);
-
       return {...el, dataWeekly};
     })
+      const mapped=selectedPackagesList.map(el=>{
+          const element=foo.find(item=>el===item.full_name);
+          return element;
+      })
 
+        const filtered=mapped.filter(el=>el);
+
+return filtered;
   }
 )
