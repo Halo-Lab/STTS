@@ -96,7 +96,7 @@ const ListRepo = () => {
 
 
             </div>}
-            {loadings && <Spinner/>}
+            {/*{loadings && <Spinner/>}*/}
             <ToastContainer/>
         </section>
     )

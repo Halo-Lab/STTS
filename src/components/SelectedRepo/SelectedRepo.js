@@ -38,7 +38,7 @@ const SelectedRepo = () => {
 
             <Form placeholder='Package, e.g. name/repo' type='addPackage' name='Add'/>
 
-            {loadings && <Spinner/>}
+            {/*{loadings && <Spinner/>}*/}
             <ToastContainer/>
 
             <DND data={selectedlist} weeklyDownload={weeklyDownload} onHandleDelete={onHandleDelete}/>
