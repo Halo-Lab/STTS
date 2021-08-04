@@ -1,7 +1,7 @@
-import React, {Suspense,lazy, useEffect} from 'react';
+import React, {lazy, Suspense, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import operations from '../redux/gitHub/operations';
-import {BrowserRouter, HashRouter, Route, Switch} from 'react-router-dom';
+import {HashRouter, Route, Switch} from 'react-router-dom';
 import Navigation from './Navigation/Navigation';
 import {fulllistPackages, getList, listPackages} from '../redux/gitHub/selectors';
 import Header from './Header/Header';
@@ -11,9 +11,7 @@ import {Spinner} from "./Spinner/Spinner";
 
 const ListRepo = lazy(() => import('./ListRepo/ListRepo'));
 const SelectedRepo = lazy(() => import('./SelectedRepo/SelectedRepo'));
-//
-// import ListRepo from "./ListRepo/ListRepo";
-// import SelectedRepo from "./SelectedRepo/SelectedRepo";
+
 
 const App = () => {
     const dispatch = useDispatch();
@@ -22,13 +20,15 @@ const App = () => {
 
     const arrayPackages = useSelector(getList);
     const listforReques = selectedPackages.length > 0 ? arrayPackages : list;
+
     useEffect(() => {
+
         listforReques.forEach((el) => {
             dispatch(operations.fetchSinglePackage(el));
-            dispatch(operations.getWeeklyDownload(el.split('/')[1]));
+            // eslint-disable-next-line no-unused-expressions
+            el ? dispatch(operations.getWeeklyDownload(el.split('/')[1])) : null;
         });
     }, [list]);
-
 
 
     return (

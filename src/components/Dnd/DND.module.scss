@@ -9,54 +9,54 @@
     padding-left: 112px;
     padding-right: 112px;
   }
-  padding-bottom: 50px;
+
 }
 
 .list {
   list-style: none;
   padding: 0;
-  display: grid;
-  grid-template-columns:1fr;
-  row-gap: 16px;
-  justify-items: center;
+  margin: 0;
+  touch-action: none;
   margin-top: 40px;
-  padding-bottom: 70px;
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 30px;
-    row-gap: 30px;
-    justify-content: center;
-  }
-  @media (min-width: 1024px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  @media (min-width: 1600px) {
-    grid-template-columns: repeat(4, 1fr);
-  }
+  min-height: 400px;
+
+
 }
 
-.item {
-  position: relative;
-  width: 87%;
-  min-height: 260px;
-  border: 1px solid #e7e7e7;
-  border-radius: 6px;
-  padding: 20px;
-  padding-top: 25px;
-  font-family: 'Roboto';
-  @media (min-width: 768px) {
-    width: 100%;
-  }
+.dropzone{
+  min-height: 400px;
+
+
 }
+
+
+.item {
+  font-family: 'Roboto';
+  min-height: 280px;
+
+
+}
+
+
+  .gridItem {
+    width: calc(100% - 14px);
+    height: 95%;
+    border: 1px solid #e7e7e7;
+    border-radius: 6px;
+    padding:20px;
+
+
+  }
+
 
 .name {
   font-size: 20px;
   color: #000000;
   font-weight: 600;
   margin-bottom: 10px;
-
-  &:hover {
-    text-decoration: underline;
+  padding-right: 10px;
+  &:hover{
+    text-decoration:underline ;
   }
 }
 
@@ -72,16 +72,21 @@
   column-gap: 20px;
   justify-content: center;
   @media (min-width: 768px) {
-    column-gap: 45px;
+    column-gap: 35px;
   }
-
+  @media (min-width: 1024px) {
+    column-gap: 20px;
+  }
+  @media (min-width: 1440px) {
+    column-gap: 35px;
+  }
   div {
     display: flex;
     align-items: center;
   }
 }
 
-.icon {
+.icon{
   width: 24px;
   height: 24px;
   margin-right: 7px;
@@ -92,16 +97,17 @@
   cursor: pointer;
   position: absolute;
   top: 16px;
-  right: 16px;
+  right: 30px;
 
   svg:hover {
     transform: scale(2);
   }
 }
 
-.chart {
+.chart{
   margin-top: 30px;
   width: 100%;
   height: 60%;
   color: #3861e1;
+  //padding-bottom: 20px;
 }
