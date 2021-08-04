@@ -39,16 +39,16 @@ const Example = ({data = [], onHandleDelete, weeklyDownload}) => {
 
         const foo = result.map(el => el?.full_name);
         dispatch(actions.addItemPackage(foo));
-        return setItems({
-            ...items,
-            result
-        });
+
+        return setItems(result);
     }
 
     const size = breakpoint === 'mobile' ? 1 : breakpoint === 'tablet' ? 2 : breakpoint === 'desktop' ? 3 : 4;
+    const lengthCards = items.length;
+    const heightConteinerDND = Math.ceil(lengthCards / size) * 280;
     return (
         <GridContextProvider onChange={onChange}>
-            <ul className={s.list}>
+            <ul style={{height: `${heightConteinerDND}px`}} className={s.list}>
                 <GridDropZone
                     className={s.dropzone}
                     id="left"

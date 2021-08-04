@@ -1,5 +1,4 @@
 import React from "react";
-import heart from '../../images/heart.png';
 
 import s from './Footer.module.scss'
 import IconLogoHaloLab from "../assets/IconLogoHaloLab/IconLogoHaloLab";
@@ -8,31 +7,31 @@ import IconLogoHaloLab from "../assets/IconLogoHaloLab/IconLogoHaloLab";
 const Footer = () => {
 
 
-  return (
-    <footer className={s.wrap}>
+    return (
+        <footer className={s.wrap}>
 
-        <a href={'https://www.halo-lab.com/'} className={s.content}>
+            <a href={'https://www.halo-lab.com/'} className={s.content}>
 
-          <p>
-            With
-          </p>
+                <p>
+                    With
+                </p>
 
-          <div className={s.heart}>
-            <p>&#x2764;&#xFE0F;</p>
-          </div>
+                <div className={s.heart}>
+                    <p>&#x2764;&#xFE0F;</p>
+                </div>
 
-          <p>from</p>
+                <p>from</p>
 
-          <div className={s.logo}>
-           <IconLogoHaloLab/>
-          </div>
+                <div className={s.logo}>
+                    <IconLogoHaloLab/>
+                </div>
 
-          <p className={s.haloLab}>
-            HALO LAB
-          </p>
-        </a>
-    </footer>
-  )
+                <p className={s.haloLab}>
+                    HALO LAB
+                </p>
+            </a>
+        </footer>
+    )
 }
 
 export default Footer

@@ -1,7 +1,7 @@
-import React, {Suspense,lazy, useEffect} from 'react';
+import React, {lazy, Suspense, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import operations from '../redux/gitHub/operations';
-import {BrowserRouter, HashRouter, Route, Switch} from 'react-router-dom';
+import {HashRouter, Route, Switch} from 'react-router-dom';
 import Navigation from './Navigation/Navigation';
 import {fulllistPackages, getList, listPackages} from '../redux/gitHub/selectors';
 import Header from './Header/Header';
@@ -26,10 +26,9 @@ const App = () => {
         listforReques.forEach((el) => {
             dispatch(operations.fetchSinglePackage(el));
             // eslint-disable-next-line no-unused-expressions
-              el?dispatch(operations.getWeeklyDownload(el.split('/')[1])):null;
+            el ? dispatch(operations.getWeeklyDownload(el.split('/')[1])) : null;
         });
     }, [list]);
-
 
 
     return (
@@ -44,7 +43,7 @@ const App = () => {
                         <Route path={'/all'} exact component={ListRepo}/>
                     </Switch>
                 </Suspense>
-                {/*<Footer/>*/}
+                <Footer/>
             </div>
         </HashRouter>
     );
