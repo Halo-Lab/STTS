@@ -9,7 +9,6 @@
     padding-left: 112px;
     padding-right: 112px;
   }
-
 }
 
 .list {
@@ -19,32 +18,23 @@
   touch-action: none;
   margin-top: 40px;
   min-height: 400px;
-
-
 }
 
 .dropzone {
   min-height: 400px;
-
-
 }
-
 
 .item {
   cursor: grabbing;
   font-family: 'Roboto';
-  min-height: 280px;
+  min-height: 350px;
   background-color: #ffffff;
   opacity: 1 !important;
-
 }
 
 .gridItem:hover {
-
   transform: scale(1.05);
   box-shadow: 25px -17px 24px -21px rgba(0, 0, 0, 0.35);
-
-
 }
 
 .gridItem {
@@ -53,9 +43,7 @@
   border: 1px solid #e7e7e7;
   border-radius: 6px;
   padding: 20px;
-
 }
-
 
 .name {
   font-size: 20px;
@@ -101,7 +89,6 @@
   height: 24px;
   margin-right: 7px;
 }
-
 
 .delete {
   cursor: pointer;
