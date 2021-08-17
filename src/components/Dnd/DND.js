@@ -54,6 +54,9 @@ const Example = ({ data = [], onHandleDelete, weeklyDownload }) => {
       case 7: {
         return data.slice(0, 1) + 'M';
       }
+      case 8: {
+        return data.slice(0, 2) + 'M';
+      }
       default:
         return 0;
     }
