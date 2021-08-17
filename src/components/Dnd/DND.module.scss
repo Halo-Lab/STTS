@@ -67,12 +67,12 @@
   display: grid;
   grid-template-columns: max-content max-content max-content max-content;
   column-gap: 20px;
-  justify-content: center;
+  justify-content: space-between;
   @media (min-width: 768px) {
     column-gap: 35px;
   }
   @media (min-width: 1024px) {
-    column-gap: 20px;
+    column-gap: 10px;
   }
   @media (min-width: 1440px) {
     column-gap: 35px;
