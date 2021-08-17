@@ -65,17 +65,17 @@
 
 .stats {
   display: grid;
-  grid-template-columns: max-content max-content max-content max-content;
+  grid-template-columns: 1.2fr 1fr 1fr 1fr;
   column-gap: 20px;
   justify-content: space-between;
   @media (min-width: 768px) {
-    column-gap: 35px;
+    column-gap: 5px;
   }
   @media (min-width: 1024px) {
-    column-gap: 10px;
+    column-gap: 5px;
   }
   @media (min-width: 1440px) {
-    column-gap: 35px;
+    column-gap: 5px;
   }
 
   div {
@@ -85,9 +85,15 @@
 }
 
 .icon {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   margin-right: 7px;
+  @media (min-width: 1024px) and (max-width: 1165px) {
+    width: 14px;
+  }
+  @media (max-width: 360px) {
+    width: 14px;
+  }
 }
 
 .delete {

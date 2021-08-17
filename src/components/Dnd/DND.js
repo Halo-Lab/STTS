@@ -40,6 +40,29 @@ const Example = ({ data = [], onHandleDelete, weeklyDownload }) => {
     return setItems(result);
   }
 
+  function statsPrefix(data) {
+    switch (data.length) {
+      case 4: {
+        return data.slice(0, 1) + 'K';
+      }
+      case 5: {
+        return data.slice(0, 2) + 'K';
+      }
+      case 6: {
+        return data.slice(0, 3) + 'KK';
+      }
+      case 7: {
+        return data.slice(0, 1) + 'M';
+      }
+      default:
+        return 0;
+    }
+  }
+
+  function statsRound(stat = 0) {
+    return String(stat).length > 3 ? statsPrefix(String(stat)) : stat;
+  }
+
   const size =
     breakpoint === 'mobile'
       ? 1
@@ -71,28 +94,28 @@ const Example = ({ data = [], onHandleDelete, weeklyDownload }) => {
                     <div className={s.icon}>
                       <IconStar />
                     </div>
-                    <p>{el?.stargazers_count}</p>
+                    <p>{statsRound(el?.stargazers_count)}</p>
                   </div>
 
                   <div className={s.fork}>
                     <div className={s.icon}>
                       <IconFork color={'#0e43ff'} />
                     </div>
-                    <p>{el?.forks}</p>
+                    <p>{statsRound(el?.forks)}</p>
                   </div>
 
                   <div className={s.downloads}>
                     <div className={s.icon}>
                       <IconDownload />
                     </div>
-                    <p>{weeklyDownload(el?.dataWeekly)}</p>
+                    <p>{statsRound(weeklyDownload(el?.dataWeekly))}</p>
                   </div>
 
                   <div className={s.issue}>
                     <div className={s.icon}>
                       <IconIssue />
                     </div>
-                    <p>{el?.open_issues}</p>
+                    <p>{statsRound(el?.open_issues)}</p>
                   </div>
                 </div>
 
