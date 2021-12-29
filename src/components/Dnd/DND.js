@@ -39,7 +39,7 @@ const Example = ({ data = [], onHandleDelete, weeklyDownload }) => {
 
     return setItems(result);
   }
-
+  console.log(data);
   function statsPrefix(data) {
     switch (data.length) {
       case 4: {
@@ -83,7 +83,7 @@ const Example = ({ data = [], onHandleDelete, weeklyDownload }) => {
           className={s.dropzone}
           id="left"
           boxesPerRow={size}
-          rowHeight={350}
+          rowHeight={380}
         >
           {items?.map((el) => (
             <GridItem className={s.item} key={el?.name}>
