@@ -22,7 +22,6 @@ const Chart = ({ arr }) => {
     ],
   };
 
-  console.log(data);
   return (
     <Line
       data={data}

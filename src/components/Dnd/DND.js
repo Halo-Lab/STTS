@@ -39,8 +39,9 @@ const Example = ({ data = [], onHandleDelete, weeklyDownload }) => {
 
     return setItems(result);
   }
-  console.log(data);
+
   function statsPrefix(data) {
+    console.log(data);
     switch (data.length) {
       case 4: {
         return data.slice(0, 1) + 'K';
@@ -97,6 +98,7 @@ const Example = ({ data = [], onHandleDelete, weeklyDownload }) => {
                     <div className={s.icon}>
                       <IconStar />
                     </div>
+                    <p className={s.tooltip}>{el?.stargazers_count}</p>
                     <p>{statsRound(el?.stargazers_count)}</p>
                   </div>
 
@@ -104,6 +106,7 @@ const Example = ({ data = [], onHandleDelete, weeklyDownload }) => {
                     <div className={s.icon}>
                       <IconFork color={'#0e43ff'} />
                     </div>
+                    <p className={s.tooltip}>{el?.forks}</p>
                     <p>{statsRound(el?.forks)}</p>
                   </div>
 
@@ -111,6 +114,7 @@ const Example = ({ data = [], onHandleDelete, weeklyDownload }) => {
                     <div className={s.icon}>
                       <IconDownload />
                     </div>
+                    <p className={s.tooltip}>{weeklyDownload(el?.dataWeekly)}</p>
                     <p>{statsRound(weeklyDownload(el?.dataWeekly))}</p>
                   </div>
 
@@ -118,6 +122,7 @@ const Example = ({ data = [], onHandleDelete, weeklyDownload }) => {
                     <div className={s.icon}>
                       <IconIssue />
                     </div>
+                    <p className={s.tooltip}>{el?.open_issues}</p>
                     <p>{statsRound(el?.open_issues)}</p>
                   </div>
                 </div>

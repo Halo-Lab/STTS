@@ -88,6 +88,7 @@
   width: 20px;
   height: 20px;
   margin-right: 7px;
+  position: relative;
   @media (min-width: 1024px) and (max-width: 1165px) {
     width: 14px;
   }
@@ -113,4 +114,37 @@
   height: 60%;
   color: #3861e1;
   padding-bottom: 10px;
+}
+
+.tooltip {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 75px;
+  @media (max-width: 360px) {
+    width: 65px;
+  }
+  height: 25px;
+  font-size: 15px;
+  top: 120%;
+  // right: 35%;
+  border: 1px solid rgba(11, 26, 233, 0.411);
+  border-radius: 8px;
+}
+
+.star,
+.fork,
+.downloads,
+.issue {
+  position: relative;
+}
+
+.star:hover,
+.fork:hover,
+.downloads:hover,
+.issue:hover {
+  .tooltip {
+    display: flex;
+  }
 }
