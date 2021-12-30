@@ -1,9 +1,10 @@
 .wrap {
   padding-bottom: 20px;
-  position: absolute;
-  bottom: 0px;
-  left: 50%;
-  transform: translateX(-50%);
+  padding-top: 20px;
+  margin: 0 auto;
+  display: inline-block;
+  // transform: translateX(-50%);
+  width: 100%;
 }
 
 .content {
@@ -20,7 +21,6 @@
   }
 
   align-items: center;
-
 }
 
 .heart {
@@ -45,6 +45,5 @@
 }
 
 .content:hover .logo path:first-child {
-  fill: #FFE30D;
-
+  fill: #ffe30d;
 }
