@@ -41,7 +41,6 @@ const Example = ({ data = [], onHandleDelete, weeklyDownload }) => {
   }
 
   function statsPrefix(data) {
-    console.log(data);
     switch (data.length) {
       case 4: {
         return data.slice(0, 1) + 'K';
