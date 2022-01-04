@@ -122,15 +122,16 @@
   justify-content: center;
   position: absolute;
   width: 75px;
-  @media (max-width: 360px) {
-    width: 65px;
-  }
   height: 25px;
   font-size: 15px;
   top: 120%;
-  // right: 35%;
   border: 1px solid rgba(11, 26, 233, 0.411);
   border-radius: 8px;
+  background-color: hotpink;
+  transition: display 1s;
+  @media (max-width: 360px) {
+    width: 65px;
+  }
 }
 
 .star,
@@ -138,6 +139,7 @@
 .downloads,
 .issue {
   position: relative;
+  cursor: pointer;
 }
 
 .star:hover,
@@ -146,5 +148,6 @@
 .issue:hover {
   .tooltip {
     display: flex;
+    background-color: rgb(224, 237, 255);
   }
 }
