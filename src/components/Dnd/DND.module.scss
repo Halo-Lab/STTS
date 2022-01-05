@@ -109,7 +109,7 @@
 }
 
 .chart {
-  margin-top: 30px;
+  margin-top: 40px;
   width: 100%;
   height: 60%;
   color: #3861e1;
@@ -117,18 +117,25 @@
 }
 
 .tooltip {
-  display: none;
+  display: flex;
+  flex-direction: column;
+
   align-items: center;
   justify-content: center;
   position: absolute;
   width: 75px;
-  height: 25px;
-  font-size: 15px;
+  height: 35px;
+  font-size: 13px;
   top: 120%;
   border: 1px solid rgba(11, 26, 233, 0.411);
   border-radius: 8px;
-  background-color: hotpink;
-  transition: display 1s;
+  transition: 1s;
+  opacity: 0;
+  z-index: -1;
+  p {
+    padding-bottom: 2px;
+    font-size: 13px;
+  }
   @media (max-width: 360px) {
     width: 65px;
   }
@@ -147,7 +154,8 @@
 .downloads:hover,
 .issue:hover {
   .tooltip {
-    display: flex;
     background-color: rgb(224, 237, 255);
+    opacity: 1;
+    z-index: 1;
   }
 }

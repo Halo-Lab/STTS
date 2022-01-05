@@ -1,7 +1,7 @@
 .form {
   position: relative;
   margin: 0 auto;
-  width: 320px;
+  width: 100%;
   min-height: 48px;
   display: grid;
   margin-top: 15px;
@@ -16,18 +16,16 @@
     column-gap: 20px;
     grid-template-columns: 1fr max-content;
     margin-top: 25px;
-
   }
   @media (min-width: 1024px) {
     width: 800px;
     column-gap: 30px;
   }
-
 }
 
 .form__input {
   height: 48px;
-  width:300px;
+  width: 300px;
   padding-left: 15px;
   border: 1px solid #e7e7e7;
   border-radius: 6px;
@@ -49,9 +47,7 @@
   border: 1px solid rgb(50, 90, 223);
   outline: none;
   border-radius: 6px;
-
 }
-
 
 .form__btn {
   width: 300px;
@@ -71,12 +67,10 @@
   }
 }
 
-
 .form__btn:focus {
   border: none;
   outline: none;
 }
-
 
 .form__btn:active {
   background-color: rgb(80, 80, 80);
@@ -93,4 +87,3 @@
     right: 180px;
   }
 }
-

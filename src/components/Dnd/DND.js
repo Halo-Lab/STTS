@@ -101,6 +101,7 @@ const Example = ({ data = [], onHandleDelete, weeklyDownload }) => {
                     </div>
                     {String(el?.stargazers_count).length > 3 && (
                       <p className={s.tooltip}>
+                        <span>Stars:</span>
                         {formatter.format(el?.stargazers_count)}
                       </p>
                     )}
@@ -112,7 +113,11 @@ const Example = ({ data = [], onHandleDelete, weeklyDownload }) => {
                       <IconFork color={'#0e43ff'} />
                     </div>
                     {String(el?.forks).length > 3 && (
-                      <p className={s.tooltip}>{formatter.format(el?.forks)}</p>
+                      <p className={s.tooltip}>
+                        {' '}
+                        <span>Forks:</span>
+                        {formatter.format(el?.forks)}
+                      </p>
                     )}
                     <p>{statsRound(el?.forks)}</p>
                   </div>
@@ -123,6 +128,7 @@ const Example = ({ data = [], onHandleDelete, weeklyDownload }) => {
                     </div>
                     {String(weeklyDownload(el?.dataWeekly)).length > 3 && (
                       <p className={s.tooltip}>
+                        <span>Downloads:</span>
                         {formatter.format(weeklyDownload(el?.dataWeekly))}
                       </p>
                     )}
@@ -134,19 +140,16 @@ const Example = ({ data = [], onHandleDelete, weeklyDownload }) => {
                     </div>
                     {String(el?.open_issues).length > 3 && (
                       <p className={s.tooltip}>
+                        <span>Issues:</span>
                         {formatter.format(el?.open_issues)}
                       </p>
                     )}
                     <p>{statsRound(el?.open_issues)}</p>
                   </div>
                 </div>
-
-                {el?.dataWeekly && (
-                  <div className={s.chart}>
-                    <Chart arr={el?.dataWeekly} />
-                  </div>
-                )}
-
+                <div className={s.chart}>
+                  <Chart arr={el?.dataWeekly} />
+                </div>
                 <div
                   onClick={() => onHandleDelete(el?.full_name)}
                   className={s.delete}
