@@ -11,6 +11,7 @@ import IconDelete from '../assets/IconDelete/IconDelete';
 import useBreakpoints from 'use-breakpoints-width';
 import { useDispatch } from 'react-redux';
 import actions from '../../redux/gitHub/actions';
+import Tooltip from '../Tooltip/Tooltip';
 
 const Example = ({ data = [], onHandleDelete, weeklyDownload }) => {
   const dispatch = useDispatch();
@@ -68,6 +69,17 @@ const Example = ({ data = [], onHandleDelete, weeklyDownload }) => {
 
   const formatter = new Intl.NumberFormat('ru-RU');
 
+  const createTooltip = (name, itemName) => {
+    return (
+      String(itemName).length > 3 && (
+        <p className={s.tooltip}>
+          <span>{name}:</span>
+          {formatter.format(itemName)}
+        </p>
+      )
+    );
+  };
+
   const size =
     breakpoint === 'mobile'
       ? 1
@@ -99,12 +111,7 @@ const Example = ({ data = [], onHandleDelete, weeklyDownload }) => {
                     <div className={s.icon}>
                       <IconStar />
                     </div>
-                    {String(el?.stargazers_count).length > 3 && (
-                      <p className={s.tooltip}>
-                        <span>Stars:</span>
-                        {formatter.format(el?.stargazers_count)}
-                      </p>
-                    )}
+                    {createTooltip('Stars', el?.stargazers_count)}
                     <p>{statsRound(el?.stargazers_count)}</p>
                   </div>
 
@@ -112,13 +119,7 @@ const Example = ({ data = [], onHandleDelete, weeklyDownload }) => {
                     <div className={s.icon}>
                       <IconFork color={'#0e43ff'} />
                     </div>
-                    {String(el?.forks).length > 3 && (
-                      <p className={s.tooltip}>
-                        {' '}
-                        <span>Forks:</span>
-                        {formatter.format(el?.forks)}
-                      </p>
-                    )}
+                    {createTooltip('Forks', el?.forks)}
                     <p>{statsRound(el?.forks)}</p>
                   </div>
 
@@ -126,24 +127,14 @@ const Example = ({ data = [], onHandleDelete, weeklyDownload }) => {
                     <div className={s.icon}>
                       <IconDownload />
                     </div>
-                    {String(weeklyDownload(el?.dataWeekly)).length > 3 && (
-                      <p className={s.tooltip}>
-                        <span>Downloads:</span>
-                        {formatter.format(weeklyDownload(el?.dataWeekly))}
-                      </p>
-                    )}
+                    {createTooltip('Downloads', weeklyDownload(el?.dataWeekly))}
                     <p>{statsRound(weeklyDownload(el?.dataWeekly))}</p>
                   </div>
                   <div className={s.issue}>
                     <div className={s.icon}>
                       <IconIssue />
                     </div>
-                    {String(el?.open_issues).length > 3 && (
-                      <p className={s.tooltip}>
-                        <span>Issues:</span>
-                        {formatter.format(el?.open_issues)}
-                      </p>
-                    )}
+                    {createTooltip('Issue', el?.open_issues)}
                     <p>{statsRound(el?.open_issues)}</p>
                   </div>
                 </div>

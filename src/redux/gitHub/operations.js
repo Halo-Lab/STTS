@@ -32,12 +32,14 @@ const fetchSinglePackage = (name) => async (dispatch) => {
 
 const getWeeklyDownload = (name) => async (dispatch) => {
   dispatch(actions.getWeeklyDownloadRequest());
+  name = name.toLowerCase();
   try {
     const { data } = await axios.get(
       `https://api.npmjs.org/downloads/range/last-week/${name}`,
     );
     dispatch(actions.getWeeklyDownloadSuccess(data));
   } catch (error) {
+    // console.log('erorr!!!!');
     dispatch(actions.getWeeklyDownloadError(error));
   }
 };
