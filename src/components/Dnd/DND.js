@@ -11,7 +11,6 @@ import IconDelete from '../assets/IconDelete/IconDelete';
 import useBreakpoints from 'use-breakpoints-width';
 import { useDispatch } from 'react-redux';
 import actions from '../../redux/gitHub/actions';
-import Tooltip from '../Tooltip/Tooltip';
 
 const Example = ({ data = [], onHandleDelete, weeklyDownload }) => {
   const dispatch = useDispatch();

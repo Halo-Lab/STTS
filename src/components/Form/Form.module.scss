@@ -23,6 +23,10 @@
   }
 }
 
+label {
+  position: relative;
+}
+
 .form__input {
   height: 48px;
   width: 300px;
@@ -79,11 +83,11 @@
 .iconSearch {
   position: absolute;
   top: 12px;
-  right: 25px;
+  right: 10%;
   @media (min-width: 768px) {
-    right: 170px;
+    right: 7%;
   }
   @media (min-width: 1024px) {
-    right: 180px;
+    right: 5%;
   }
 }
