@@ -66,6 +66,19 @@ const Example = ({ data = [], onHandleDelete, weeklyDownload }) => {
     return String(stat).length > 3 ? statsPrefix(String(stat)) : stat;
   }
 
+  const formatter = new Intl.NumberFormat('ru-RU');
+
+  const createTooltip = (name, itemName) => {
+    return (
+      String(itemName).length > 3 && (
+        <p className={s.tooltip}>
+          <span>{name}:</span>
+          {formatter.format(itemName)}
+        </p>
+      )
+    );
+  };
+
   const size =
     breakpoint === 'mobile'
       ? 1
@@ -97,7 +110,7 @@ const Example = ({ data = [], onHandleDelete, weeklyDownload }) => {
                     <div className={s.icon}>
                       <IconStar />
                     </div>
-                    <p className={s.tooltip}>{el?.stargazers_count}</p>
+                    {createTooltip('Stars', el?.stargazers_count)}
                     <p>{statsRound(el?.stargazers_count)}</p>
                   </div>
 
@@ -105,7 +118,7 @@ const Example = ({ data = [], onHandleDelete, weeklyDownload }) => {
                     <div className={s.icon}>
                       <IconFork color={'#0e43ff'} />
                     </div>
-                    <p className={s.tooltip}>{el?.forks}</p>
+                    {createTooltip('Forks', el?.forks)}
                     <p>{statsRound(el?.forks)}</p>
                   </div>
 
@@ -113,25 +126,20 @@ const Example = ({ data = [], onHandleDelete, weeklyDownload }) => {
                     <div className={s.icon}>
                       <IconDownload />
                     </div>
-                    <p className={s.tooltip}>{weeklyDownload(el?.dataWeekly)}</p>
+                    {createTooltip('Downloads', weeklyDownload(el?.dataWeekly))}
                     <p>{statsRound(weeklyDownload(el?.dataWeekly))}</p>
                   </div>
-
                   <div className={s.issue}>
                     <div className={s.icon}>
                       <IconIssue />
                     </div>
-                    <p className={s.tooltip}>{el?.open_issues}</p>
+                    {createTooltip('Issue', el?.open_issues)}
                     <p>{statsRound(el?.open_issues)}</p>
                   </div>
                 </div>
-
-                {el?.dataWeekly && (
-                  <div className={s.chart}>
-                    <Chart arr={el?.dataWeekly} />
-                  </div>
-                )}
-
+                <div className={s.chart}>
+                  <Chart arr={el?.dataWeekly} />
+                </div>
                 <div
                   onClick={() => onHandleDelete(el?.full_name)}
                   className={s.delete}

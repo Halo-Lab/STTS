@@ -5,10 +5,9 @@ import actions from '../../redux/gitHub/actions';
 import Form from '../Form/Form';
 import s from './ListRepo.module.scss';
 import User from '../User/User';
-import { getUser, listPackages, loading } from '../../redux/gitHub/selectors';
+import { getUser, listPackages } from '../../redux/gitHub/selectors';
 import IconAdd from '../assets/IconAdd/IconAdd';
 import IconAdded from '../assets/IconAdded/IconAdded';
-import { Spinner } from '../Spinner/Spinner';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -18,7 +17,6 @@ const ListRepo = () => {
   const [page, setPage] = useState(1);
   const packages = useSelector((state) => state.packages.packages);
   const userData = useSelector(getUser);
-  const loadings = useSelector(loading);
   const list = useSelector(listPackages);
   const err = useSelector((state) => state.packages.error);
 
@@ -27,7 +25,7 @@ const ListRepo = () => {
       toast('There is no such repository or network error');
       dispatch(actions.getPackagesError(false));
     }
-  }, [err]);
+  }, [err, dispatch]);
 
   const listPackagesWithLabel = packages.map((el) => {
     if (list.includes(el.full_name)) return { ...el, added: true };
@@ -56,7 +54,7 @@ const ListRepo = () => {
     if (page < 1) return;
     if (packages.length === 0) return;
     dispatch(operations.fetchPackages(userData.login, page));
-  }, [page]);
+  }, [page, dispatch, packages.length, userData.login]);
 
   return (
     <section className={s.container}>
@@ -102,7 +100,6 @@ const ListRepo = () => {
           </div>
         </div>
       )}
-      {/*{loadings && <Spinner/>}*/}
       <ToastContainer />
     </section>
   );
