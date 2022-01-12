@@ -37,10 +37,14 @@ const getWeeklyDownload = (name) => async (dispatch) => {
     const { data } = await axios.get(
       `https://api.npmjs.org/downloads/range/last-week/${name}`,
     );
+    // const response = await fetch(
+    //   `https://api.npmjs.org/downloads/range/last-week/${name}`,
+    // );
+    // const { data } = await response.json();
     dispatch(actions.getWeeklyDownloadSuccess(data));
-  } catch (error) {
-    // console.log('erorr!!!!');
-    dispatch(actions.getWeeklyDownloadError(error));
+  } catch (e) {
+    console.clear();
+    dispatch(actions.getWeeklyDownloadError(e));
   }
 };
 
