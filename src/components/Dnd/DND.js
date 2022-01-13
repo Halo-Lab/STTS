@@ -70,12 +70,12 @@ const Example = ({ data = [], onHandleDelete, weeklyDownload }) => {
 
   const createTooltip = (name, itemName) => {
     return (
-      String(itemName).length > 3 && (
-        <p className={s.tooltip}>
-          <span>{name}:</span>
-          {formatter.format(itemName)}
-        </p>
-      )
+      // String(itemName).length > 3 && (
+      <p className={s.tooltip}>
+        <span>{name}:&nbsp;&nbsp;</span>
+        {formatter.format(itemName)}
+      </p>
+      // )
     );
   };
 
@@ -113,7 +113,6 @@ const Example = ({ data = [], onHandleDelete, weeklyDownload }) => {
                     {createTooltip('Stars', el?.stargazers_count)}
                     <p>{statsRound(el?.stargazers_count)}</p>
                   </div>
-
                   <div className={s.fork}>
                     <div className={s.icon}>
                       <IconFork color={'#0e43ff'} />
@@ -139,6 +138,7 @@ const Example = ({ data = [], onHandleDelete, weeklyDownload }) => {
                 </div>
                 <div className={s.chart}>
                   <Chart arr={el?.dataWeekly} />
+                  {!el.dataWeekly && <div className={s.noDataMessage}>No data</div>}
                 </div>
                 <div
                   onClick={() => onHandleDelete(el?.full_name)}

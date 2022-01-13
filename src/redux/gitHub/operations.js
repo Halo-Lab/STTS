@@ -38,9 +38,9 @@ const getWeeklyDownload = (name) => async (dispatch) => {
       `https://api.npmjs.org/downloads/range/last-week/${name}`,
     );
     dispatch(actions.getWeeklyDownloadSuccess(data));
-  } catch (error) {
-    // console.log('erorr!!!!');
-    dispatch(actions.getWeeklyDownloadError(error));
+  } catch (e) {
+    console.log(e.response.data.error);
+    dispatch(actions.getWeeklyDownloadError(e));
   }
 };
 
