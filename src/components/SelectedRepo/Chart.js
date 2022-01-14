@@ -4,7 +4,15 @@ import date from 'date-and-time';
 import { Line } from 'react-chartjs-2';
 
 const Chart = ({ arr }) => {
-  const dataDownloads = arr?.downloads?.map((el) => el?.downloads);
+  const checkData = (arr) => {
+    if (arr) {
+      const dataDownloads = arr?.downloads?.map((el) => el?.downloads);
+      const dataSum = dataDownloads.reduce((a, b) => a + b);
+      if (dataSum) {
+        return dataDownloads;
+      } else return undefined;
+    }
+  };
 
   const labels = arr?.downloads?.map((el) =>
     date.transform(el.day, 'YYYY-MM-DD', 'ddd'),
@@ -17,7 +25,7 @@ const Chart = ({ arr }) => {
         label: 'Weekly Downloads',
         backgroundColor: '#3861e1',
         borderColor: '#3861e1',
-        data: dataDownloads,
+        data: checkData(arr),
       },
     ],
   };

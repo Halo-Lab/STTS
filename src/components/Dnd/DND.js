@@ -69,14 +69,29 @@ const Example = ({ data = [], onHandleDelete, weeklyDownload }) => {
   const formatter = new Intl.NumberFormat('ru-RU');
 
   const createTooltip = (name, itemName) => {
+    if (itemName === undefined) {
+      itemName = 0;
+    }
     return (
-      // String(itemName).length > 3 && (
       <p className={s.tooltip}>
         <span>{name}:&nbsp;&nbsp;</span>
         {formatter.format(itemName)}
       </p>
-      // )
     );
+  };
+
+  const createMessageOnChart = (data) => {
+    if (!data) {
+      return <div className={s.noDataMessage}>No data</div>;
+    } else {
+      let sum = 0;
+      data.downloads.forEach((i) => {
+        sum += i.downloads;
+      });
+      if (!sum) {
+        return <div className={s.noDataMessage}>No downloads</div>;
+      }
+    }
   };
 
   const size =
@@ -138,7 +153,7 @@ const Example = ({ data = [], onHandleDelete, weeklyDownload }) => {
                 </div>
                 <div className={s.chart}>
                   <Chart arr={el?.dataWeekly} />
-                  {!el.dataWeekly && <div className={s.noDataMessage}>No data</div>}
+                  {createMessageOnChart(el.dataWeekly)}
                 </div>
                 <div
                   onClick={() => onHandleDelete(el?.full_name)}
