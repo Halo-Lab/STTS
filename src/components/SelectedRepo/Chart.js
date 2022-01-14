@@ -2,7 +2,7 @@ import React from 'react';
 import date from 'date-and-time';
 
 import { Line } from 'react-chartjs-2';
-
+// let dataObj = {};
 const Chart = ({ arr }) => {
   const checkData = (arr) => {
     if (arr) {
@@ -14,12 +14,22 @@ const Chart = ({ arr }) => {
     }
   };
 
-  const labels = arr?.downloads?.map((el) =>
-    date.transform(el.day, 'YYYY-MM-DD', 'ddd'),
-  );
+  const checkLabels = (arr) => {
+    if (!arr) {
+      return undefined;
+    }
+    if (arr) {
+      if (!checkData(arr)) {
+        return undefined;
+      } else
+        return arr?.downloads?.map((el) =>
+          date.transform(el.day, 'YYYY-MM-DD', 'ddd'),
+        );
+    }
+  };
 
   const data = {
-    labels: labels,
+    labels: checkLabels(arr),
     datasets: [
       {
         label: 'Weekly Downloads',

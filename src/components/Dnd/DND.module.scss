@@ -1,6 +1,8 @@
 .container {
   padding-left: 16px;
   padding-right: 16px;
+  box-sizing: content-box;
+  height: 100%;
   @media (min-width: 768px) {
     padding-left: 50px;
     padding-right: 50px;
@@ -16,12 +18,13 @@
   padding: 0;
   margin: 0;
   touch-action: none;
-  margin-top: 40px;
-  min-height: 400px;
+  box-sizing: content-box;
+  height: 100%;
+  // min-height: 400px;
 }
 
 .dropzone {
-  min-height: 400px;
+  // min-height: 400px;
 }
 
 .item {
@@ -51,6 +54,8 @@
   font-weight: 600;
   margin-bottom: 10px;
   padding-right: 10px;
+  display: block;
+  height: 48px;
 
   &:hover {
     text-decoration: underline;
@@ -100,8 +105,8 @@
 .delete {
   cursor: pointer;
   position: absolute;
-  top: 16px;
-  right: 30px;
+  top: 10px;
+  right: 20px;
 
   svg:hover {
     transform: scale(2);
@@ -167,10 +172,12 @@
   position: absolute;
   top: 50%;
   left: 50%;
+  width: 130px;
+  text-align: center;
   transform: translate(-50%, -75%);
   color: #0000004f;
-  font-size: 25px;
-  @media (max-width: 360px) {
-    font-size: 20px;
+  font-size: 20px;
+  @media (max-width: 1024px) {
+    font-size: 17px;
   }
 }

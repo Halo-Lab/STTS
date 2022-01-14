@@ -103,7 +103,7 @@ const Example = ({ data = [], onHandleDelete, weeklyDownload }) => {
       ? 3
       : 4;
   const lengthCards = items.length;
-  const heightConteinerDND = Math.ceil(lengthCards / size) * 350;
+  const heightConteinerDND = Math.ceil(lengthCards / size) * 380;
   return (
     <GridContextProvider onChange={onChange}>
       <ul style={{ height: `${heightConteinerDND}px` }} className={s.list}>
