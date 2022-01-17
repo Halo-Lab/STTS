@@ -9,14 +9,15 @@
     padding-left: 112px;
     padding-right: 112px;
   }
-  padding-bottom: 50px;
+  padding-bottom: 30px;
+  // height: 100%;
 }
 
 .list {
   list-style: none;
   padding: 0;
   display: grid;
-  grid-template-columns:1fr;
+  grid-template-columns: 1fr;
   row-gap: 16px;
   justify-items: center;
   margin-top: 40px;
@@ -86,7 +87,6 @@
   height: 24px;
   margin-right: 7px;
 }
-
 
 .delete {
   cursor: pointer;
