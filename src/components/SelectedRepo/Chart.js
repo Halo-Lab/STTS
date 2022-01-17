@@ -2,7 +2,6 @@ import React from 'react';
 import date from 'date-and-time';
 
 import { Line } from 'react-chartjs-2';
-// let dataObj = {};
 const Chart = ({ arr }) => {
   const checkData = (arr) => {
     if (arr) {
@@ -10,17 +9,16 @@ const Chart = ({ arr }) => {
       const dataSum = dataDownloads.reduce((a, b) => a + b);
       if (dataSum) {
         return dataDownloads;
-      } else return undefined;
+      } else return null;
     }
   };
 
   const checkLabels = (arr) => {
     if (!arr) {
-      return undefined;
-    }
-    if (arr) {
+      return null;
+    } else {
       if (!checkData(arr)) {
-        return undefined;
+        return null;
       } else
         return arr?.downloads?.map((el) =>
           date.transform(el.day, 'YYYY-MM-DD', 'ddd'),
