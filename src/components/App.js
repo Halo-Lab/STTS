@@ -34,12 +34,14 @@ const App = () => {
       <div className={s.container}>
         <Header />
         <Navigation />
-        <Suspense fallback={<Spinner />}>
-          <Switch>
-            <Route path={'/'} exact component={SelectedRepo} />
-            <Route path={'/all'} exact component={ListRepo} />
-          </Switch>
-        </Suspense>
+        <div className={s.main_content}>
+          <Suspense fallback={<Spinner />}>
+            <Switch>
+              <Route path={'/'} exact component={SelectedRepo} />
+              <Route path={'/all'} exact component={ListRepo} />
+            </Switch>
+          </Suspense>
+        </div>
         <Footer />
       </div>
     </HashRouter>

@@ -1,5 +1,11 @@
 .container {
   position: relative;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   // width: 100vw;
+}
+
+.main_content {
+  flex: 1;
 }
