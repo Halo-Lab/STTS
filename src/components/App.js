@@ -8,6 +8,7 @@ import Header from './Header/Header';
 import Footer from './Footer/Footer';
 import s from './App.module.scss';
 import { Spinner } from './Spinner/Spinner';
+import { Loader } from './Spinner/Loader';
 
 const ListRepo = lazy(() => import('./ListRepo/ListRepo'));
 const SelectedRepo = lazy(() => import('./SelectedRepo/SelectedRepo'));
@@ -35,7 +36,7 @@ const App = () => {
         <Header />
         <Navigation />
         <div className={s.main_content}>
-          <Suspense fallback={<Spinner />}>
+          <Suspense fallback={<Loader />}>
             <Switch>
               <Route path={'/'} exact component={SelectedRepo} />
               <Route path={'/all'} exact component={ListRepo} />

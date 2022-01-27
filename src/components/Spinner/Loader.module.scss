@@ -1,0 +1,74 @@
+.box {
+  width: fit-content;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  transform: translateX(-50%);
+}
+
+.box .loaderBox {
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+.box .loaderBox svg {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  transform: rotate(25deg);
+}
+.box .loaderBox svg circle {
+  width: 100px;
+  height: 100px;
+  fill: none;
+  stroke-width: 14;
+  stroke: #000;
+  transform: translate(8px, 7px);
+  stroke-dasharray: 440;
+  stroke-dashoffset: 440;
+  stroke-linecap: round;
+}
+.box .loaderBox svg circle:nth-child(1) {
+  stroke-dashoffset: 0;
+  stroke: transparent;
+}
+.box .loaderBox svg circle:nth-child(2) {
+  stroke: #02021e;
+  stroke-dasharray: 289.027px, 289.027px;
+  animation: circleSvg 3s linear infinite;
+}
+
+.star {
+  position: absolute;
+  opacity: 0;
+  width: 34px;
+  height: 34px;
+  top: 2px;
+  right: 5px;
+  animation: visiblestar 3s ease-in-out infinite;
+}
+
+@keyframes circleSvg {
+  0% {
+    stroke-dashoffset: 289.569px;
+  }
+  25% {
+    stroke-dashoffset: 123.569px;
+  }
+  100% {
+    stroke-dashoffset: 123.569px;
+  }
+}
+
+@keyframes visiblestar {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
