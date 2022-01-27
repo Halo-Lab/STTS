@@ -1,11 +1,12 @@
 import React from 'react';
+import cn from 'classnames';
 
 import s from './IconSpiner.module.scss';
 
-export const Stars = () => {
+export const Stars = ({ className }) => {
   return (
     <svg
-      className={s.size}
+      className={cn(s.size, className)}
       width="27"
       height="27"
       viewBox="0 0 27 27"
@@ -22,10 +23,10 @@ export const Stars = () => {
   );
 };
 
-export const Around = () => {
+export const Around = ({ className }) => {
   return (
     <svg
-      className={s.size}
+      className={cn(s.size, className)}
       width="20"
       height="20"
       viewBox="0 0 20 20"
