@@ -7,7 +7,6 @@ import { fulllistPackages, getList, listPackages } from '../redux/gitHub/selecto
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
 import s from './App.module.scss';
-import { Spinner } from './Spinner/Spinner';
 import { Loader } from './Spinner/Loader';
 
 const ListRepo = lazy(() => import('./ListRepo/ListRepo'));
