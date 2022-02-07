@@ -12,7 +12,6 @@
 
   @media (min-width: 768px) {
     grid-template-rows: max-content;
-    width: 720px;
     column-gap: 20px;
     grid-template-columns: 1fr max-content;
     margin-top: 25px;
@@ -36,7 +35,7 @@ label {
   font-size: 18px;
   font-family: 'Roboto';
   @media (min-width: 768px) {
-    width: 560px;
+    width: 100%;
   }
   @media (min-width: 1024px) {
     width: 625px;
