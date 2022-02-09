@@ -12,6 +12,6 @@ export const styles = {
   },
   activeLink: {
     borderBottom:'2px solid #3861e7',
-      },
+  },
 };
 

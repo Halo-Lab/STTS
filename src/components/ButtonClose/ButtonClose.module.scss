@@ -1,0 +1,13 @@
+@import '../../styles/variables/colors';
+
+.buttonClose {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 17px;
+  right: 17px;
+  padding: 0;
+}

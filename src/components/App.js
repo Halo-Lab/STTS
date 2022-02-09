@@ -1,13 +1,18 @@
 import React, { lazy, Suspense, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import operations from '../redux/gitHub/operations';
 import { HashRouter, Route, Switch } from 'react-router-dom';
-import Navigation from './Navigation/Navigation';
+import { useDispatch, useSelector } from 'react-redux';
+
+import operations from '../redux/gitHub/operations';
 import { fulllistPackages, getList, listPackages } from '../redux/gitHub/selectors';
+import { getActiveHint } from '../redux/hints/selectors';
+import actionsHints from '../redux/hints/actions';
+
+import Navigation from './Navigation/Navigation';
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
-import s from './App.module.scss';
 import { Loader } from './Spinner/Loader';
+import { Overlay } from './Overlay';
+import s from './App.module.scss';
 
 const ListRepo = lazy(() => import('./ListRepo/ListRepo'));
 const SelectedRepo = lazy(() => import('./SelectedRepo/SelectedRepo'));
@@ -19,6 +24,8 @@ const App = () => {
 
   const arrayPackages = useSelector(getList);
   const listforReques = selectedPackages.length > 0 ? arrayPackages : list;
+
+  const activeHint = useSelector(getActiveHint);
 
   useEffect(() => {
     listforReques.forEach((el) => {
@@ -43,6 +50,11 @@ const App = () => {
           </Suspense>
         </div>
         <Footer />
+        <Overlay 
+          shown={activeHint}
+          onClick={() => dispatch(actionsHints.setHiddenHints())}
+          onKeyDown={() => dispatch(actionsHints.setHiddenHints())}
+        />
       </div>
     </HashRouter>
   );
