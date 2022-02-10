@@ -1,6 +1,7 @@
 import React, { lazy, Suspense, useEffect } from 'react';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import cs from 'classnames';
 
 import operations from '../redux/gitHub/operations';
 import { fulllistPackages, getList, listPackages } from '../redux/gitHub/selectors';
@@ -38,7 +39,7 @@ const App = () => {
   return (
     // Basename is needed for github pages, as this app is working on https://halo-lab.github.io/STTS
     <HashRouter hashType="noslash" basename="/">
-      <div className={s.container}>
+      <div className={cs(s.container)}>
         <Header />
         <Navigation />
         <div className={s.main_content}>

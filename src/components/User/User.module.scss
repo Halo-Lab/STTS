@@ -1,3 +1,5 @@
+@import '../../styles/mixins';
+
 .content {
   width: 100%;
   min-height: 104px;
@@ -36,6 +38,12 @@
   grid-template-columns: repeat(2, 1fr);
   margin-top: 20px;
   row-gap: 10px;
+  font-size: 14px;
+
+  @include mobile-xl {
+    font-size: 16px;
+  }
+
   @media (min-width: 768px) {
     grid-template-columns: repeat(3, max-content);
     column-gap: 35px;
@@ -45,10 +53,9 @@
 
 .icon {
   display: flex;
-  p{
+  p {
     margin-left: 5px;
   }
-
 }
 
 .userInfo {
@@ -69,6 +76,5 @@
     @media (max-width: 767px) {
       font-size: 14px;
     }
-
   }
 }

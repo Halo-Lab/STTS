@@ -10,4 +10,8 @@
   top: 17px;
   right: 17px;
   padding: 0;
+
+  &:hover {
+    transform: rotate(-180deg);
+  }
 }

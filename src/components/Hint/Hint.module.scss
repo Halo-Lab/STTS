@@ -1,9 +1,11 @@
+@import '../../styles/mixins';
+
 .hint {
-  max-width: 297px;
+  max-width: 255px;
   width: 100%;
   border-radius: 6px;
   background-color: #fff;
-  padding: 24px 18px 18px;
+  padding: 18px 15px 15px;
   position: absolute;
   z-index: 99;
   opacity: 1;
@@ -11,10 +13,12 @@
   transition-duration: 700ms;
   top: 0;
   left: 0;
-  transform: translate(5%, 50%);
+  transform: translate(12%, 52%);
 
-  @media (min-width: 1024px) {
+  @include tablet {
+    max-width: 297px;
     transform: translate(-3%, 50%);
+    padding: 24px 18px 18px;
   }
 
   &.hidden {
@@ -24,14 +28,26 @@
 
   &.stepSecond {
     left: 50%;
-    transform: translate(-50%, 50%);
+    transform: translate(-50%, 67%);
+
+    @media (min-width: 360px) {
+      transform: translate(-50%, 79%);
+    }
+
+    @include tablet {
+      transform: translate(-50%, 55%);
+    }
+
+    @include desktop {
+      transform: translate(-50%, 50%);
+    }
   }
 
   &.stepLast {
-    transform: translate(5%, 23%);
+    transform: translate(12%, 23%);
 
-    @media (min-width: 1024px) {
-      transform: translate(0%, 23%);
+    @include tablet {
+      transform: translate(0, 23%);
     }
   }
 
@@ -53,18 +69,23 @@
   }
 
   &__nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @include dFlex;
+    @include alignItemsCenter;
+    @include jContentBetween;
   }
 
   &__pointer {
+    max-width: 40px;
     position: absolute;
     top: 0;
     left: 0;
     z-index: inherit;
     transition-duration: 700ms;
     transform: translate(-110%, -65%);
+
+    @include tablet {
+      max-width: 53px;
+    }
 
     &.stepSecond {
       top: 100%;

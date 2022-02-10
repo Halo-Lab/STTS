@@ -1,7 +1,7 @@
 .form {
   position: relative;
   margin: 0 auto;
-  width: 100%;
+  width: max-content;
   min-height: 48px;
   display: grid;
   grid-template-columns: max-content;
@@ -14,7 +14,6 @@
     grid-template-rows: max-content;
     column-gap: 20px;
     grid-template-columns: 1fr max-content;
-    margin-top: 25px;
   }
   @media (min-width: 1024px) {
     width: 800px;
@@ -28,15 +27,13 @@ label {
 
 .form__input {
   height: 48px;
-  width: 300px;
+  width: 290px;
   padding-left: 15px;
   border: 1px solid #e7e7e7;
   border-radius: 6px;
   font-size: 18px;
   font-family: 'Roboto';
-  @media (min-width: 768px) {
-    width: 100%;
-  }
+
   @media (min-width: 1024px) {
     width: 625px;
   }
@@ -53,7 +50,7 @@ label {
 }
 
 .form__btn {
-  width: 300px;
+  width: 290px;
   height: 48px;
   cursor: pointer;
   background-color: #3861e1;
