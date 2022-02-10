@@ -1,0 +1,26 @@
+@import '../../styles/variables/colors';
+
+.button {
+  display: inline-block;
+  width: max-content;
+  border-radius: 6px;
+  background-color: $color-blue-dark;
+  padding: 10px 17px;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0.008em;
+  color: $color-white;
+
+  &:hover {
+    background-color: $color-blue-light-dark;
+  }
+
+  &:disabled {
+    background-color: $color-gray-light;
+    cursor: not-allowed;
+
+    &:hover {
+      background-color: $color-gray-dark;
+    }
+  }
+}

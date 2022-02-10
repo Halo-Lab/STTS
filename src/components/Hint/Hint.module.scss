@@ -1,0 +1,95 @@
+@import '../../styles/mixins';
+
+.hint {
+  max-width: 255px;
+  width: 100%;
+  border-radius: 6px;
+  background-color: #fff;
+  padding: 18px 15px 15px;
+  position: absolute;
+  z-index: 99;
+  opacity: 1;
+  visibility: visible;
+  transition-duration: 700ms;
+  top: 0;
+  left: 0;
+  transform: translate(12%, 52%);
+
+  @include tablet {
+    max-width: 297px;
+    transform: translate(-3%, 50%);
+    padding: 24px 18px 18px;
+  }
+
+  &.hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  &.stepSecond {
+    left: 50%;
+    transform: translate(-50%, 67%);
+
+    @media (min-width: 360px) {
+      transform: translate(-50%, 79%);
+    }
+
+    @include tablet {
+      transform: translate(-50%, 55%);
+    }
+
+    @include desktop {
+      transform: translate(-50%, 50%);
+    }
+  }
+
+  &.stepLast {
+    transform: translate(12%, 23%);
+
+    @include tablet {
+      transform: translate(0, 23%);
+    }
+  }
+
+  &__content {
+    margin-bottom: 22px;
+    padding: 0 10px;
+  }
+
+  &__title {
+    margin-bottom: 13px;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  &__desc {
+    max-width: 240px;
+    line-height: 1.5;
+  }
+
+  &__nav {
+    @include dFlex;
+    @include alignItemsCenter;
+    @include jContentBetween;
+  }
+
+  &__pointer {
+    max-width: 40px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: inherit;
+    transition-duration: 700ms;
+    transform: translate(-110%, -65%);
+
+    @include tablet {
+      max-width: 53px;
+    }
+
+    &.stepSecond {
+      top: 100%;
+      transform: translate(-28%, -30%) rotateX(-180deg) rotateZ(32deg);
+    }
+  }
+}

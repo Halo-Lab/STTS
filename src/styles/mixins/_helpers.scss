@@ -1,0 +1,74 @@
+@mixin after {
+  &::after {
+    content: '';
+    display: inline-block;
+    @content;
+  }
+}
+
+@mixin before {
+  &::before {
+    content: '';
+    display: inline-block;
+    @content;
+  }
+}
+
+@mixin dFlex {
+  display: flex;
+  @content;
+}
+
+@mixin dInlineFlex {
+  display: inline-flex;
+  @content;
+}
+
+@mixin flexColumn {
+  flex-direction: column;
+  @content;
+}
+
+@mixin flexWrap {
+  flex-wrap: wrap;
+  @content;
+}
+
+@mixin jContentBetween {
+  justify-content: space-between;
+  @content;
+}
+
+@mixin jSpaceAround {
+  justify-content: space-around;
+  @content;
+}
+
+@mixin jContentCenter {
+  justify-content: center;
+  @content;
+}
+
+@mixin jContentEnd {
+  justify-content: flex-end;
+}
+
+@mixin alignItemsEnd {
+  align-items: flex-end;
+  @content;
+}
+
+@mixin alignItemsCenter {
+  align-items: center;
+  @content;
+}
+
+@mixin alignItemsStart {
+  align-items: flex-start;
+  @content;
+}
+
+@mixin dGrid {
+  display: grid;
+  @content;
+}

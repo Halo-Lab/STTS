@@ -6,22 +6,30 @@ body {
   // height: 100vh;
 }
 
+body {
+  font: 400 16px 'Roboto', sans-serif;
+  letter-spacing: 0.0016em;
+}
+
 a {
   color: inherit;
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
-}
-
-img {
-  width: 100%;
-  height: auto;
-}
-
 p {
   margin: 0;
+}
+
+a,
+button {
+  transition-duration: 500ms;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
 }
 
 .dropzone {
